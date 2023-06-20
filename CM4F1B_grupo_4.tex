@@ -1,0 +1,65 @@
+%! Integrantes:
+%! Aldo Luna Bueno (Ciencia de la computación)
+%! Alejandro Maycoll Escobar Mejia (Ciencia de la computación)
+%! Carlos Alonso Aznarán Laos (Matemática)
+%! Khalid Zaid Izquierdo Ayllon (Ciencia de la computación)
+%! Brian Alberto Huaman Garcia (Ciencia de la computación)
+%! Carlos Daniel Malvaceda Canales (Ciencia de la computación)
+%! Universidad Nacional de Ingeniería
+%! Facultad de Ciencias
+%! Lima, Perú
+%! Uso:
+%! $ sudo pacman -Syu texlive texlive-langspanish zathura # dependencias, visor
+%! $ arara main
+%! $ zathura main.pdf
+%! Ver https://wiki.archlinux.org/title/TeX_Live
+% arara: clean: {
+% arara: --> extensions:
+% arara: --> ['aux','bbl','bcf','blg','log','nav','out',
+% arara: --> 'pdf','run.xml','snm','synctex.gz','toc']
+% arara: --> }
+% arara: lualatex: {
+% arara: --> shell: yes,
+% arara: --> draft: yes,
+% arara: --> interaction: batchmode
+% arara: --> }
+% arara: biber
+% arara: lualatex: {
+% arara: --> shell: yes,
+% arara: --> draft: yes,
+% arara: --> interaction: batchmode
+% arara: --> }
+% arara: lualatex: {
+% arara: --> shell: yes,
+% arara: --> synctex: yes,
+% arara: --> interaction: batchmode
+% arara: --> }
+% arara: clean: {
+% arara: --> extensions:
+% arara: --> ['aux','bbl','bcf','blg','log','nav','out',
+% arara: --> 'run.xml','snm','synctex.gz','toc']
+% arara: --> }
+\input{preamble}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}
+	\frametitle{
+		\color{DarkBlue}
+		Lista de N$^{\circ}$ de pregunta / estudiante
+	}
+	\tableofcontents
+\end{frame}
+
+\input{p2}
+\input{p11}
+\input{p14}
+\input{p23}
+\input{p28}
+\input{p33}
+\input{p34}
+\input{references}
+
+\end{document}

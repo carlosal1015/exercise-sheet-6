@@ -1,0 +1,188 @@
+\PassOptionsToPackage{svgnames}{xcolor}
+\documentclass[
+	spanish,
+	8pt,
+	utf8,
+	xcolor=table,
+	handout,
+	aspectratio=169,
+	professionalfonts,
+	% notheorems,
+	mathserif,
+	leqno,
+	% t
+]{beamer}
+\setbeamersize{text margin left=5pt,text margin right=5pt}
+\usepackage[spanish,es-sloppy]{babel}
+\spanishdatedel\decimalpoint
+\usepackage{mathtools}
+% \usepackage{minted}
+\usepackage{enumerate}
+\usepackage{multicol}
+% \usepackage{systeme}
+% \usepackage{nicematrix}
+% \usepackage[ISO]{diffcoeff}
+% \usepackage[spanish]{algorithm2e}
+% \usepackage[linesnumbered,ruled,boxed,vlined,spanish]{algorithm2e}
+% \usepackage{algorithmicx}
+% \usepackage{drawmatrix}
+% \usetikzlibrary{calc, tikzmark}
+% \xdefinecolor{B}{RGB}{0, 102, 221}
+% \usepackage{pyluatex}
+% \usepackage{pythontex}
+\usepackage[
+	citestyle=numeric,
+	% style=apa,
+	backend=biber,
+	defernumbers=true,
+	% sorting=ynt,
+	maxcitenames=4
+]{biblatex}
+\addbibresource{references.bib}
+
+% \newcommand{\tabitem}{%
+% 	\usebeamertemplate{itemize item}\hspace*{\labelsep}}
+% \usepackage{ifluatex}
+% \makeatletter
+% \begingroup\endlinechar=-1\relax
+% \everyeof{\noexpand}%
+% \edef\x{\endgroup\def\noexpand\homepath{%
+% 		\@@input|"kpsewhich --var-value=HOME" }}\x
+% \makeatother
+
+% \def\overleafhome{/tmp}
+
+% \ifluatex
+% \ifx\homepath\overleafhome
+% \else
+% 	\usepackage[lite]{mtpro2}% ,curlybraces by default
+% 	% Documentación del paquete mtpro2.
+% 	% http://ctan.dcc.uchile.cl/fonts/mtp2lite/texmf/doc/fonts/mtpro2/guide2.pdf
+% 	\makeatletter
+% 	\patchcmd{\PEX@}{\dp\Pbox@>\dp\z@}{\ht\Pbox@>\dp\z@}{}{}
+% 	\patchcmd{\SQEX@}{\dp\Sbox@>\dp0}{\ht\Sbox@>\dp0}{}{}
+% 	\makeatother
+% 	% Patches begin
+% 	\makeatletter
+% 	% Fix weird space
+% 	\patchcmd{\LEFTRIGHT}
+% 	{\kern-2\nulldelimiterspace\mskip-\thinmuskip}
+% 	{\kern-2\nulldelimiterspace}
+% 	{}{}
+% 	% Two new boxes
+% 	\newsavebox{\mtp@matrixbox}
+% 	\newsavebox{\mtp@casesbox}
+% 	% Round parentheses should always be used by default
+% 	% `pmatrix' from `amsmath'
+% 	\renewenvironment{pmatrix}{%
+% 		\matrix@check\pmatrix\setbox\mtp@matrixbox=\hbox\bgroup$\env@matrix
+% 	}{%
+% 		\endmatrix$\egroup\PARENS{\copy\mtp@matrixbox}%
+% 	}
+% 	% Curly braces are used only if `curlybraces' is set
+% 	% From `mtpro2.sty': \DeclareOption{curlybraces}{\let\mtp@br=c}
+% 	\ifx\mtp@br c
+% 		% `Bmatrix' from `amsmath'
+% 		\renewenvironment{Bmatrix}{%
+% 			\setbox\mtp@matrixbox=\hbox\bgroup$\env@matrix
+% 		}{%
+% 			\endmatrix$\egroup\LEFTRIGHT\lbrace\rbrace{\copy\mtp@matrixbox}%
+% 		}
+% 		% `cases' from `amsmath'
+% 		\renewcommand*\env@cases{%
+% 		\let\@ifnextchar\new@ifnextchar
+% 			\setbox\mtp@casesbox=\hbox\bgroup$%
+% 				\def\arraystretch{1.2}%
+% 				\array{@{}l@{\quad}l@{}}%
+% 				}
+% 				\renewenvironment{cases}{%
+% 				\matrix@check\cases\env@cases
+% 				}{%
+% 				\endarray$\egroup\LEFTRIGHT\lbrace.{\copy\mtp@casesbox}%
+% 			}
+% 		\fi
+% 		% Now, the matrices from `mathtools'
+% 		\MHInternalSyntaxOn
+% 		\MaybeMHPrecedingSpacesOff
+% 		% `pmatrix*' from `mathtools'
+% 		\renewenvironment{pmatrix*}[1][c]
+% 		{\setbox\mtp@matrixbox=\hbox\bgroup$\MT_matrix_begin:N #1}
+% 		{\MT_matrix_end:$\egroup\PARENS{\copy\mtp@matrixbox}}
+% 		\MH_if_meaning:NN \mtp@br c
+% 		% `Bmatrix*' from `mathtools'
+% 		\renewenvironment{Bmatrix*}[1][c]
+% 		{\setbox\mtp@matrixbox=\hbox\bgroup$\MT_matrix_begin:N #1}
+% 		{\MT_matrix_end:$\egroup\LEFTRIGHT\lbrace\rbrace{\copy\mtp@matrixbox}}
+% 		\MH_fi:
+% 		\MHPrecedingSpacesOn
+% 		\MHInternalSyntaxOff
+% 		\makeatother
+% 		% Patches end
+% 		\usepackage{fontspec}
+% 		\setmonofont{Fira Mono}
+% 		\usepackage{minted}
+% 		\usepackage{pyluatex}
+% 	\fi
+% \fi
+
+\newcolumntype{x}[1]{>{\centering\arraybackslash\hspace{0pt}}p{#1}}
+
+\newcounter{savedenum}
+\newcommand*{\saveenum}{\setcounter{savedenum}{\theenumi}}
+\newcommand*{\resume}{\setcounter{enumi}{\thesavedenum}}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}{}
+\setbeamertemplate{headline}{}
+% \setbeamertemplate{items}[ball]
+\setbeamertemplate{frametitle}[default][center]
+
+% https://tex.stackexchange.com/questions/68080/beamer-bibliography-icon
+\setbeamertemplate{bibliography item}{%
+	\ifboolexpr{ test {\ifentrytype{book}} or test {\ifentrytype{mvbook}}
+		or test {\ifentrytype{collection}} or test {\ifentrytype{mvcollection}}
+		or test {\ifentrytype{reference}} or test {\ifentrytype{mvreference}} }
+	{\setbeamertemplate{bibliography item}[book]}
+	{\ifentrytype{online}
+		{\setbeamertemplate{bibliography item}[online]}
+		{\setbeamertemplate{bibliography item}[article]}}%
+	\usebeamertemplate{bibliography item}}
+
+\defbibenvironment{bibliography}
+{\list{}
+	{\settowidth{\labelwidth}{\usebeamertemplate{bibliography item}}%
+		\setlength{\leftmargin}{\labelwidth}%
+		\setlength{\labelsep}{\biblabelsep}%
+		\addtolength{\leftmargin}{\labelsep}%
+		\setlength{\itemsep}{\bibitemsep}%
+		\setlength{\parsep}{\bibparsep}}}
+{\endlist}
+{\item}
+
+\title{
+	\huge\sffamily\color{DarkBlue}
+	Sexta Práctica Dirigida\quad Grupo N$^{\circ}$4
+}
+
+\subtitle{
+	\large\scshape\color{DarkBlue}
+	Análisis y Modelamiento Numérico I\quad CM4F1 B\\[.5\baselineskip]
+	\normalsize\normalfont
+	Profesor Ángel Enrique Ramírez Gutiérrez.
+}
+
+\author{
+	Aldo Luna Bueno\qquad\and\qquad
+	Alejandro Escobar Mejia\qquad\and\qquad
+	Carlos Aznarán Laos\and \\[\baselineskip]
+	Brian Huaman Garcia\qquad\and\qquad
+	Khalid Izquierdo Ayllon\qquad\and\qquad
+	Carlos Malvaceda Canales
+}
+
+\institute{\large
+	Facultad de Ciencias \and
+	Universidad Nacional de Ingeniería
+}
+
+\date{\today} % 23 de junio del 2023
