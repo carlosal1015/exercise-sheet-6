@@ -30,3 +30,5 @@ fig = plt.figure()
 ax = fig.add_subplot(111, projection="3d")
 ax.plot_trisurf(verts[:, 0], verts[:, 1], faces, verts[:, 2], cmap="jet", lw=0)
 plt.show()
+
+# https://stackoverflow.com/a/63773167
