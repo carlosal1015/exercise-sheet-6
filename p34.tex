@@ -1,4 +1,4 @@
-\section{Pregunta N$^{\circ}$34\qquad Nombre}
+\section{Pregunta N$^{\circ}$34\qquad Carlos Alonso Aznarán Laos}
 
 \begin{frame}
 	\frametitle{
@@ -14,7 +14,7 @@
 	\end{math}
 	aparece ampliamente en cálculos científicos.
 	Supongamos que $F$ es suave, es decir, tiene tantas derivadas
-	parciales continuas como la discusión requiera.
+	parciales continuas como se requiera.
 	Un algoritmo conocido para este problema son las
 	\alert{iteraciones de Newton}:
 	\begin{equation*}
@@ -35,7 +35,7 @@
 	convergencia del algoritmo.
 	Desafortunadamente, tal conocimiento sobre los de $F$ no suele
 	estar disponible a priori.
-	Como posible remedio, se puede definir
+	Como posible remedio, se puede definir:
 
 	\begin{definition}[Función de homotopía]
 		Decimos que
@@ -126,7 +126,34 @@
 			}
 		\end{figure}
 	\end{alertblock}
+	\begin{definition}[Valor regular]
+		Sea $F\colon\mathbb{R}^{n}\to\mathbb{R}^{p}$ suave.
+		Un punto $y\in\mathbb{R}^{p}$ es \alert{valor regular} de $F$ sii
+		% \coloneqq\left\{x\in\mathbb{R}^{n}\mid F\left(x\right)=y\right\}
+		\begin{math}
+			\forall x\in F^{-1}\left(\left\{y\right\}\right):
+			\operatorname{Imag}\left(DF\left(x\right)\right)=
+			\mathbb{R}^{p}
+		\end{math}.
+		% donde $DF\left(x\right)\in\mathbb{R}^{n\times p}$ es la matriz
+		% jacobiana de $F$, que consiste de todas las derivadas parciales
+		% de $F\left(x\right)$ con respecto a
+		% $x=\left(x_{1},\dotsc,x_{n}\right)$.
+	\end{definition}
+	$0\in\mathbb{R}^{n}$ es un valor regular de $H$ siempre que
+	la matriz jacobiana $DH\in\mathbb{R}^{n\times n+1}$ de $H$ con
+	respecto a $\left(x,t\right)$ es de rango $n$ (rango fila completo)
+	para cualquier
+	\begin{math}
+		\left(x,t\right)\in
+		H^{-1}\left(\left\{0\right\}\right)\subset
+		\mathbb{R}^{n}\times\mathbb{R}
+	\end{math}.
+	Esta condición permite la continuación de una solución de un solo
+	sistema en la deformación en una curva solución.
+\end{frame}
 
+\begin{frame}
 	\begin{definition}[Homotopía de punto fijo]
 		Sean
 		\begin{math}
@@ -151,7 +178,7 @@
 		sistema de interés.
 	\end{definition}
 	La suavidad de esta construcción de homotopía está garantizada por
-	el teorema de Sard.
+	el siguiente:
 	\begin{theorem}[Teorema de Sard]
 		Sean $X\subset\mathbb{R}^{n_{1}}$ e $Y\subset\mathbb{R}^{n_{2}}$
 		dos conjuntos abiertos, $\phi\colon X\times Y\to\mathbb{R}^{m}$
@@ -160,19 +187,6 @@
 		para casi todo $y\in Y$, $v$ es un punto regular de
 		$\pi_{Y}\colon X\to\mathbb{R}^{m}$.
 	\end{theorem}
-
-	\begin{definition}[Valor regular]
-		Sea $F\colon\mathbb{R}^{n}\to\mathbb{R}^{p}$ suave.
-		Un punto $y\in\mathbb{R}^{p}$ es \alert{valor regular} de $F$ sii
-		\begin{equation*}
-			\forall x\in F^{-1}\left(\left\{y\right\}\right)\coloneqq
-			\left\{
-			x\in\mathbb{R}^{n}\mid
-			F\left(x\right)=y
-			\right\}:
-			\operatorname{rango}\left(DF\left(x\right)\right)=p.
-		\end{equation*}
-	\end{definition}
 \end{frame}
 
 \begin{frame}
