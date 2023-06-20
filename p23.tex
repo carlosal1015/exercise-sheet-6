@@ -4,13 +4,21 @@
 	\begin{enumerate}\setcounter{enumi}{22}
 		\item
 
-		      Aplique el método del punto fijo para sistemas no lineales
-		      para aproximar la solución del sistema no lineal, iniciando
-		      en
+		      Aplique el método del punto fijo para aproximar la solución
+		      del sistema no lineal
+		      \begin{align*}
+			      6x_{1}-2\cos\left(x_{2}x_{3}\right)-1                   & =0 \\
+			      9x_{2}+\sqrt{x^{2}_{1}+\sin\left(x_{3}\right)+1.06}+0.9 & =0 \\
+			      60x_{3}+3\exp\left(-x_{1}x_{2}\right)+10 \pi-3          & =0
+		      \end{align*}
+		      iniciando en
 		      \begin{math}
 			      P_{0}=
 			      \left(
 			      x^{0}_{1},x^{0}_{2},x^{0}_{3}
+			      \right)=
+			      \left(
+			      0,0,0
 			      \right)
 		      \end{math}
 		      e iterando hasta que
@@ -19,14 +27,7 @@
 			      P_{i+1}-
 			      P_{i}\right\|
 			      \leq 10^{-5}
-		      \end{math}
-		      y $P_{0}=\left(0,0,0\right)$
-		      \begin{align*}
-			      6x_{1}-2\cos\left(x_{2}x_{3}\right)-1                   & =0 \\
-			      9x_{2}+\sqrt{x^{2}_{1}+\sin\left(x_{3}\right)+1.06}+0.9 & =0 \\
-			      60x_{3}+3\exp\left(-x_{1}x_{2}\right)+10 \pi-3          & =0
-		      \end{align*}
-
+		      \end{math}.
 		      % $P_0=(0,1,0,1,-0,1)$
 		      %   \begin{aligned}
 		      %     3 x_1-\cos \left(x_2 x_3\right)+\frac{1}{2}                            & =0 \\
