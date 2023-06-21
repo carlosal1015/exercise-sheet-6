@@ -187,6 +187,105 @@
 		para casi todo $y\in Y$, $v$ es un punto regular de
 		$\pi_{Y}\colon X\to\mathbb{R}^{m}$.
 	\end{theorem}
+
+	\begin{theorem}[Existencia de soluciones de un sistema no lineal]
+		Sean
+		\begin{math}
+			F\colon\mathbb{R}^{n}\times\mathbb{R}^{n}
+		\end{math}
+		suave y $U\subset\mathbb{R}^{n}$ un conjunto compacto con
+		interior no vacío.
+		Si para cualquier $x\in\partial U$, ${F\left(x\right)}^{T}\left(x-a\right)>0$,
+		entonces existe un $x^{\ast}\in\operatorname{int}\left(U\right)$ tal que
+		$F\left(x^{\ast}\right)=0$.
+	\end{theorem}
+
+	\begin{proof}
+		Sea
+		\begin{math}
+			H\colon
+			\mathbb{R}^{n}\times\left[0,1\right]\to
+			\mathbb{R}^{n}
+		\end{math}
+		una homotopía definida como
+		\begin{math}
+			H\left(x,t\right)\coloneqq
+			\left(1-t\right)\left(x-a\right)+
+			tF\left(x\right).
+		\end{math}
+		Como antes, para casi todo $a$, $H$ satisface la condición de
+		suavidad para $t\neq 1$.
+		Esto garantiza que el conjunto solución de $H\left(x,t\right)=0$
+		consiste de todas las curvas suaves.
+		Por simple inspección, $a$ es la única solución de $H\left(x,t\right)=0$.
+		También, si $x\in\partial U$, entonces
+		\begin{equation*}
+			{H\left(x,t\right)}^{T}\left(x-a\right)=
+			\left(1-t\right){\left\|x-a\right\|}^{2}+
+			t{F\left(x\right)}^{T}\left(x-a\right)>0.
+		\end{equation*}
+		Entonces, la curva solución definida por $H\left(x,t\right)=0$
+		que emana de $\left(a,0\right)$ no puede volver a $t=0$, y no
+		puede alcanzar la frontera de $U$.
+		Por lo tanto, debe extenderse a $t=1$ dentro del interior de $U$,
+		dando un punto
+		\begin{math}
+			\left(x^{\ast},1\right)\in
+			H^{-1}\left(\left\{0\right\}\right)
+		\end{math}
+		con $x^{\ast}\in U$ que satisface $F\left(x^{\ast}\right)=0$.
+	\end{proof}
+\end{frame}
+
+\begin{frame}
+	Otra función de homotopía comúnmente utilizada es
+	\begin{definition}[Homotopía de Newton]
+		La \alert{homotopía de Newton}
+		$H\colon\mathbb{R}^{n+1}\to\mathbb{R}^{n}$ viene dada
+		por
+		\begin{equation}\label{eq:newtonhomotopy}
+			H\left(x,t\right)\coloneqq
+			\left(1-t\right)
+			\left[F\left(x\right)-F\left(a\right)\right]+
+			tF\left(x\right),
+		\end{equation}
+		donde
+		\begin{math}
+			F\colon\mathbb{R}^{n}\times\mathbb{R}^{n}
+		\end{math}
+		es el sistema suave de interés, y
+		$a\in\mathbb{R}^{n}$ es un punto elegido genéricamente.
+	\end{definition}
+	Claramente, en $t=1$, $H\left(x,1\right)=F\left(x\right)=0$, y en
+	$t=0$, el sistema inicial es
+	\begin{math}
+		H\left(x,0\right)=
+		F\left(x\right)-F\left(a\right)=
+		0
+	\end{math}
+	para el cual $a$ es solución.
+	Como antes, si $H$ satisface la condición de suavidad, entonces el
+	conjunto solución de $H\left(x,t\right)=0\in\mathbb{R}^{n+1}$.
+
+	Vale la pena señalar la estrecha conexión entre la homotopía de
+	Newton y el conocido método de Newton para resolver ecuaciones no
+	lineales: Derivando ambos lados de $H\left(x,t\right)=0$ dado
+	por~\eqref{eq:newtonhomotopy} se obtiene el problema de valor
+	inicial
+	\begin{align*}
+		\dot{x}\left(t\right) & =
+		-{\left(DF\left(x\left(t\right)\right)\right)}^{-1}
+		F\left(a\right)            \\
+		x\left(0\right)       & =a
+	\end{align*}
+	en dominios en los que $DF\left(x\right)$ es no singular.
+	Aplicando el método de Euler en $t=0$ con tamaño de paso $1$ a la
+	EDO anterior desde el punto inicial $x=a$, la aproximación de
+	$x\left(1\right)$ se convierte en
+	\begin{equation*}
+		x\left(1\right)=
+		a-{\left(DF\left(a\right)\right)}^{-1}F\left(a\right).
+	\end{equation*}
 \end{frame}
 
 \begin{frame}
