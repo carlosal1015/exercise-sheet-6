@@ -34,27 +34,19 @@
 		      población total de aves un $60$\% viven en $Z_{1}$, un
 		      $40$\% viven en $Z_{2}$.
 
-		      \
-
 		      \begin{enumerate}[a)]
 			      \item
 
 			            Indique las variables a usar.
 
-			            \
-
 			      \item
 
 			            Determine la matriz que define la migración.
-
-			            \
 
 			      \item
 
 			            Determine el polinomio característico usando los
 			            métodos Leverrier y Krylov.
-
-			            \
 
 			      \item
 
@@ -71,36 +63,76 @@
 			      $Z_{1}$ y $Z_{2}$, respectivamente.
 
 			\item
-			      \begin{align*}
-				      x^{\left(k+1\right)}_{1} & =
-				      0.6x^{\left(k\right)}_{1}+
-				      0.2x_{2}^{\left(k\right)}    \\
-				      x^{\left(k+1\right)}_{2} & =
-				      0.4x^{\left(k\right)}_{1}+
-				      0.8x^{\left(k\right)}_{2}
-			      \end{align*}
+
+			      \begin{equation*}
+				      \begin{aligned}
+					      x^{\left(k+1\right)}_{1} & =
+					      0.6x^{\left(k\right)}_{1}+
+					      0.2x_{2}^{\left(k\right)}    \\
+					      x^{\left(k+1\right)}_{2} & =
+					      0.4x^{\left(k\right)}_{1}+
+					      0.8x^{\left(k\right)}_{2}
+				      \end{aligned}\iff
+				      \begin{bNiceMatrix}
+					      x^{\left(k+1\right)}_{1} \\
+					      x^{\left(k+1\right)}_{2}
+				      \end{bNiceMatrix}
+				      =
+				      \begin{bNiceMatrix}
+					      0.6 & 0.2 \\
+					      0.4 & 0.8
+				      \end{bNiceMatrix}
+				      \begin{bNiceMatrix}
+					      x^{\left(k\right)}_{1} \\
+					      x^{\left(k\right)}_{2}
+				      \end{bNiceMatrix}\iff
+				      x^{\left(k+1\right)}=
+				      Ax^{\left(k\right)}.
+			      \end{equation*}
+
+			\item
+
+			      Método de Leverrier
+
+			      \begin{equation*}
+				      A=\begin{bNiceMatrix}
+					      0.6 & 0.2 \\
+					      0.4 & 0.8
+				      \end{bNiceMatrix},\quad
+				      A^{2}=
+				      \begin{bNiceMatrix}
+					      0.44 & 0.28 \\
+					      0.56 & 0.72
+				      \end{bNiceMatrix},\quad
+				      \begin{aligned}
+					      s_{1} & =
+					      \operatorname{traz}
+					      \left(A\right)=
+					      0.6+0.8=
+					      1.4.      \\
+					      s_{2} & =
+					      \operatorname{traz}
+					      \left(A^{2}\right)=
+					      0.44+0.72=
+					      1.16.     \\
+					      a_{1} & =
+					      -s_{1}=
+					      -1.4.     \\
+					      a_{2} & =
+					      -\frac{1}{2}
+					      \left(
+					      s_{2}+
+					      \left(a_{1}\times s_{1}\right)
+					      \right)=
+					      -\frac{1}{2}
+					      \left(
+					      1.16+
+					      \left(-1.4\times 1.4\right)
+					      \right)=
+					      0.4.
+				      \end{aligned}
+			      \end{equation*}
 		\end{enumerate}
-
-		\begin{equation*}
-			\begin{pmatrix}
-				x^{\left(k+1\right)}_{1} \\
-				x^{\left(k+1\right)}_{2}
-			\end{pmatrix}
-			=
-			\begin{pmatrix}
-				0.6 & 0.2 \\
-				0.4 & 0.8
-			\end{pmatrix}
-			\begin{pmatrix}
-				x^{\left(k\right)}_{1} \\
-				x^{\left(k\right)}_{2}
-			\end{pmatrix}
-		\end{equation*}
-
-		\begin{equation*}
-			x^{\left(k+1\right)}=
-			Ax^{\left(k\right)}
-		\end{equation*}
 	\end{solution}
 \end{frame}
 
@@ -109,244 +141,188 @@
 		\begin{enumerate}[c)]
 			\item
 
-			      Método de Leverrier:
-
-			      \begin{equation*}
-				      A=\begin{pmatrix}
-					      0.6 & 0.2 \\
-					      0.4 & 0.8
-				      \end{pmatrix}
-			      \end{equation*}
-
-			      \begin{equation*}
-				      A^{2}=
-				      \begin{pmatrix}
-					      0.44 & 0.28 \\
-					      0.56 & 0.72
-				      \end{pmatrix}
-			      \end{equation*}
-
+			      Así,
 			      \begin{math}
-				      s_{1}=\operatorname{traz}\left(A\right)=1.4\\
-				      s_{2}=\operatorname{traz}\left(A^{2}\right)=1.16\\
-				      a_{1}=-s_{1}=-1.4\\
-				      a_{2}=-\frac{1}{2}\left(s_{2}+(a_{1}\times s_{1}\right)\right)=
-				      -\frac{1}{2}\left(1.16+\left(-1.4\times 1.4\right)\right)=0.4
-			      \end{math}
-			      \begin{equation*}
 				      P\left(x\right)=
 				      x^{2}-1.4x+0.4
+			      \end{math}.
+
+			      Método de Krylov:
+
+			      \begin{equation*}
+				      \begin{aligned}
+					      y_{0} & =
+					      \begin{bNiceMatrix}
+						      1 \\
+						      0
+					      \end{bNiceMatrix}. \\
+					      y_{1} & =
+					      Ay_{0}=
+					      \begin{bNiceMatrix}
+						      0.6 \\
+						      0.4
+					      \end{bNiceMatrix}. \\
+					      y_{2} & =
+					      Ay_{1}=
+					      \begin{bNiceMatrix}
+						      0.44 \\
+						      0.56
+					      \end{bNiceMatrix}.
+				      \end{aligned},\quad
+				      \begin{aligned}
+					      \begin{bNiceMatrix}
+						      y_{1} & y_{0}
+					      \end{bNiceMatrix}
+					      \begin{bNiceMatrix}
+						      a_{1} \\
+						      a_{2}
+					      \end{bNiceMatrix} & =
+					      y_{2}.                \\
+					      \begin{bNiceMatrix}
+						      0.6 & 1 \\
+						      0.4 & 0
+					      \end{bNiceMatrix}
+					      \begin{bNiceMatrix}
+						      a_{1} \\
+						      a_{2}
+					      \end{bNiceMatrix} & =
+					      \begin{bNiceMatrix}
+						      0.44 \\
+						      0.56
+					      \end{bNiceMatrix}.    \\
+					      \begin{bNiceMatrix}
+						      a_{1} \\
+						      a_{2}
+					      \end{bNiceMatrix} & =
+					      \begin{bNiceMatrix}
+						      -1.4 \\
+						      0.4
+					      \end{bNiceMatrix}.
+				      \end{aligned}
 			      \end{equation*}
-			      .
+
+			      Así,
+			      \begin{math}
+				      P\left(x\right)=
+				      x^{2}-1.4x+0.4
+			      \end{math}.
 		\end{enumerate}
-	\end{solution}
-\end{frame}
 
-\begin{frame}
-	\begin{solution}
-		Método de Krylov:
-
-		\begin{equation*}
-			y_{0}=
-			\begin{pmatrix}
-				1 \\
-				0
-			\end{pmatrix}
-		\end{equation*}
-
-		\begin{equation*}
-			y_{1}=
-			Ay_{0}=
-			\begin{pmatrix}
-				0.6 \\
-				0.4
-			\end{pmatrix}
-		\end{equation*}
-
-		\begin{equation*}
-			y_{2}=
-			Ay_{1}=
-			\begin{pmatrix}
-				0.44 \\
-				0.56
-			\end{pmatrix}
-		\end{equation*}
-
-		\begin{equation*}
-			\begin{pmatrix}
-				y_{1} & y_{0}
-			\end{pmatrix}
-			\begin{pmatrix}
-				a_{1} \\
-				a_{2}
-			\end{pmatrix}=
-			y_{2}
-		\end{equation*}
-
-		\begin{equation*}
-			\begin{pmatrix}
-				0.6 & 1 \\
-				0.4 & 0
-			\end{pmatrix}
-			\begin{pmatrix}
-				a_{1} \\
-				a_{2}
-			\end{pmatrix}=
-			\begin{pmatrix}
-				0.44 \\
-				0.56
-			\end{pmatrix}
-		\end{equation*}
-
-		\begin{equation*}
-			\begin{pmatrix}
-				a_{1} \\
-				a_{2}
-			\end{pmatrix}=
-			\begin{pmatrix}
-				-1.4 \\
-				0.4
-			\end{pmatrix}
-		\end{equation*}
-
-		\begin{equation*}
-			P\left(x\right)=
-			x^{2}-1.4x+0.4
-		\end{equation*}
-	\end{solution}
-\end{frame}
-
-\begin{frame}
-
-	\begin{solution}
 		\begin{enumerate}[d)]
 			\item
 
 			      Método de Potencia
 			      \begin{equation*}
 				      A=
-				      \begin{pmatrix}
+				      \begin{bNiceMatrix}
 					      0.6 & 0.2 \\
 					      0.4 & 0.8
-				      \end{pmatrix}
-			      \end{equation*}
-
-			      \begin{equation*}
+				      \end{bNiceMatrix},\quad
 				      x_{0}=
-				      \begin{pmatrix}
+				      \begin{bNiceMatrix}
 					      1 \\
 					      0
-				      \end{pmatrix}
-			      \end{equation*}
-
-			      \begin{equation*}
-				      x_{1}=
-				      Ax_{0}=
-				      \begin{pmatrix}
-					      0.6 \\
+				      \end{bNiceMatrix},\quad
+				      \begin{aligned}
+					      x_{1} & =
+					      Ax_{0}=
+					      \begin{bNiceMatrix}
+						      0.6 \\
+						      0.4
+					      \end{bNiceMatrix}\to
 					      0.4
-				      \end{pmatrix}\to
-				      0.4
-				      \begin{pmatrix}
-					      1.5 \\
-					      1
-				      \end{pmatrix}
+					      \begin{bNiceMatrix}
+						      1.5 \\
+						      1
+					      \end{bNiceMatrix} \\
+					      x_{2} & =
+					      Ax_{1}=
+					      \begin{bNiceMatrix}
+						      0.44 \\
+						      0.56
+					      \end{bNiceMatrix}\to
+					      0.4
+					      \begin{bNiceMatrix}
+						      1 \\
+						      1.27
+					      \end{bNiceMatrix} \\
+					      x_{6} & =
+					      Ax_{5}=
+					      \begin{bNiceMatrix}
+						      0.336064 \\
+						      0.663936
+					      \end{bNiceMatrix}\to
+					      0.336064
+					      \begin{bNiceMatrix}
+						      1 \\
+						      1.975623
+					      \end{bNiceMatrix}\approx
+					      \begin{bNiceMatrix}
+						      1 \\
+						      2
+					      \end{bNiceMatrix}.
+				      \end{aligned}
 			      \end{equation*}
 
-			      \begin{equation*}
-				      x_{2}=
-				      Ax_{1}=
-				      \begin{pmatrix}
-					      0.44 \\
-					      0.56
-				      \end{pmatrix}\to
-				      0.4
-				      \begin{pmatrix}
-					      1 \\
-					      1.27
-				      \end{pmatrix}
-			      \end{equation*}
-
-			      \begin{equation*}
-				      x_{6}=
-				      Ax_{5}=
-				      \begin{pmatrix}
-					      0.336064 \\
-					      0.663936
-				      \end{pmatrix}\to
-				      0.336064
-				      \begin{pmatrix}
-					      1 \\
-					      1.975623
-				      \end{pmatrix}\approx
-				      \begin{pmatrix}
-					      1 \\
-					      2
-				      \end{pmatrix}
-			      \end{equation*}
 			      Entonces podemos ver que el vector $x_{6}$ se acerca
 			      al autovector dominante de autovalor $1$.
 		\end{enumerate}
 	\end{solution}
-
 \end{frame}
+
 \begin{frame}
 	\begin{solution}
-		Método del Potencia Escalado
-		\begin{equation*}
-			A=
-			\begin{pmatrix}
-				0.6 & 0.2 \\
-				0.4 & 0.8
-			\end{pmatrix}
-		\end{equation*}
+		\begin{enumerate}[d)]
+			\item
 
-		\begin{equation*}
-			x_{0}=
-			\begin{pmatrix}
-				1 \\
-				0
-			\end{pmatrix}
-		\end{equation*}
-		\begin{equation*}
-			Ax_{0}=
-			\begin{pmatrix}
-				0.6 \\
-				0.4
-			\end{pmatrix}\to
-			x_{1}=
-			\begin{pmatrix}
-				1 \\
-				0.66
-			\end{pmatrix}
-		\end{equation*}
+			      Método de Potencia Escalado
+			      \begin{equation*}
+				      A=
+				      \begin{bNiceMatrix}
+					      0.6 & 0.2 \\
+					      0.4 & 0.8
+				      \end{bNiceMatrix},\quad
+				      x_{0}=
+				      \begin{bNiceMatrix}
+					      1 \\
+					      0
+				      \end{bNiceMatrix},\quad
+				      \begin{aligned}
+					      Ax_{0} & =
+					      \begin{bNiceMatrix}
+						      0.6 \\
+						      0.4
+					      \end{bNiceMatrix}\to
+					      x_{1}=
+					      \begin{bNiceMatrix}
+						      1 \\
+						      0.66
+					      \end{bNiceMatrix} \\
+					      Ax_{1} & =
+					      \begin{bNiceMatrix}
+						      0.73 \\
+						      0.93
+					      \end{bNiceMatrix}\to
+					      x_{2}=
+					      \begin{bNiceMatrix}
+						      0.785 \\
+						      1
+					      \end{bNiceMatrix} \\
+					      Ax_{5} & =
+					      \begin{bNiceMatrix}
+						      0.73 \\
+						      0.93
+					      \end{bNiceMatrix}\to
+					      x_{6}=
+					      \begin{bNiceMatrix}
+						      0.506 \\
+						      1
+					      \end{bNiceMatrix}
+				      \end{aligned}
+			      \end{equation*}
 
-		\begin{equation*}
-			Ax_{1}=
-			\begin{pmatrix}
-				0.73 \\
-				0.93
-			\end{pmatrix}\to
-			x_{2}=
-			\begin{pmatrix}
-				0.785 \\
-				1
-			\end{pmatrix}
-		\end{equation*}
-
-		\begin{equation*}
-			Ax_{5}=
-			\begin{pmatrix}
-				0.73 \\
-				0.93
-			\end{pmatrix}\to
-			x_{6}=
-			\begin{pmatrix}
-				0.506 \\
-				1
-			\end{pmatrix}
-		\end{equation*}
-		Entonces podemos ver que el vector $x_{6}$ se acerca al
-		autovector dominante de autovalor $1$.
+			      Entonces podemos ver que el vector $x_{6}$ se
+			      acerca al autovector dominante de autovalor $1$.
+		\end{enumerate}
 	\end{solution}
 \end{frame}
