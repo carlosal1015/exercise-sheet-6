@@ -13,7 +13,7 @@
 		F\colon\mathbb{R}^{n}\to\mathbb{R}^{n}
 	\end{math}
 	aparece ampliamente en cálculos científicos.
-	Supongamos que $F$ es suave, es decir, tiene tantas derivadas
+	Suponga que $F$ es suave, es decir, tiene tantas derivadas
 	parciales continuas como se requiera.
 	Un algoritmo conocido para este problema son las
 	\alert{iteraciones de Newton}:
@@ -29,19 +29,19 @@
 	\begin{math}
 		DF\left(x^{\left(n\right)}\right)
 	\end{math}
-	es la matriz jacobiana de $F$ en $x^{\left(n\right)}$.
+	es la \alert{matriz jacobiana} de $F$ en $x^{\left(n\right)}$.
 	Este algoritmo es \alert{local} en el sentido de que se requiere
 	una muy buena estimación de la solución correcta para la
 	convergencia del algoritmo.
 	Desafortunadamente, tal conocimiento sobre los de $F$ no suele
 	estar disponible a priori.
-	Como posible remedio, se puede definir:
+	Como posible remedio, se define
 
 	\begin{definition}[Función de homotopía]
 		Decimos que
 		\begin{math}
 			H\colon
-			\mathbb{R}^{n}\times\mathbb{R}\to
+			\mathbb{R}^{n+1}\times\mathbb{R}\to
 			\mathbb{R}^{n}
 		\end{math}
 		es una \alert{homotopía diferenciable} (tanto en $x$ como en $t$)
@@ -51,13 +51,13 @@
 			H\left(x,0\right)=
 			G\left(x\right),\quad
 			H\left(x,1\right)=
-			F\left(x\right),
+			F\left(x\right)
 		\end{equation*}
 		donde
 		\begin{math}
 			G\colon\mathbb{R}^{n}\to\mathbb{R}^{n}
 		\end{math}
-		es suave cuyos ceros se pueden obtener fácilmente.
+		es suave y sus ceros se pueden obtener fácilmente.
 		Sea $x_{0}$ un cero de $G\left(x\right)=0$.
 		Entonces, si
 	\end{definition}
@@ -67,11 +67,21 @@
 			\begin{itemize}
 				\item
 
-				      $t=0: H\left(x,0\right)=0$ tiene una solución $x=x_{0}$.
+				      \begin{math}
+					      t=0:
+					      H\left(x,0\right)=
+					      0
+				      \end{math}
+				      tiene una única solución $x=x_{0}$.
 
 				\item
 
-				      $t=1: H\left(x,1\right)=0$ concuerda con
+				      \begin{math}
+					      t=1:
+					      H\left(x,1\right)=
+					      0
+				      \end{math}
+				      concuerda con
 				      $F\left(x\right)=0$.
 			\end{itemize}
 		\end{column}
@@ -117,15 +127,16 @@
 			\mathbb{R}^{n}\times\mathbb{R}
 		\end{math}
 		definida por $t=1$.
-		\begin{figure}[ht!]
-			\centering
-			\includegraphics[width=0.65\paperwidth]{homotopy}
-			\caption{
-				Una curva suave definida por $H\left(x,t\right)=0$ alcanzando
-				una solución $x^{\ast}$ del sistema objetivo.
-			}
-		\end{figure}
 	\end{alertblock}
+	\begin{figure}[ht!]
+		\centering
+		\includegraphics[width=0.65\paperwidth]{homotopy}
+		\caption{
+			Una curva suave definida por $H\left(x,t\right)=0$ alcanzando
+			una solución $x^{\ast}$ del sistema objetivo.
+		}
+	\end{figure}
+
 	\begin{definition}[Valor regular]
 		Sea $F\colon\mathbb{R}^{n}\to\mathbb{R}^{p}$ suave.
 		Un punto $y\in\mathbb{R}^{p}$ es \alert{valor regular} de $F$ sii
@@ -140,6 +151,7 @@
 		% de $F\left(x\right)$ con respecto a
 		% $x=\left(x_{1},\dotsc,x_{n}\right)$.
 	\end{definition}
+
 	$0\in\mathbb{R}^{n}$ es un valor regular de $H$ siempre que
 	la matriz jacobiana $DH\in\mathbb{R}^{n\times n+1}$ de $H$ con
 	respecto a $\left(x,t\right)$ es de rango $n$ (rango fila completo)
@@ -157,25 +169,49 @@
 	\begin{definition}[Homotopía de punto fijo]
 		Sean
 		\begin{math}
-			F\colon\mathbb{R}^{n}\times\mathbb{R}^{n}
+			F\colon\mathbb{R}^{n}\to\mathbb{R}^{n}
 		\end{math}
 		y
 		\begin{math}
-			x=\left(x_{1},\dotsc,x_{n}\right)\in\mathbb{R}^{n}
+			x\in\mathbb{R}^{n}
 		\end{math}.
 		Una de las homotopías más sencillas para encontrar soluciones de
 		$F\left(x\right)=0$ es la \alert{homotopía de punto fijo} dada
 		por
 		\begin{equation*}
 			H\left(x,t\right)\coloneqq
-			\left(1-t\right)\left(x-a\right)+tF\left(x\right),
+			\left(1-t\right)\left(x-a\right)+tF\left(x\right)
 		\end{equation*}
 		donde $a\in\mathbb{R}^{n}$ y
 		$t\in\left[0,1\right]\subset\mathbb{R}$.
-		En $t=0$, el sistema inicial es $H\left(x,0\right)=x-a$
-		para el cual la única solución es $x=a$.
-		En $t=1$, el sistema $H\left(x,1\right)=F\left(x\right)=0$ es el
-		sistema de interés.
+		Entonces, si
+		\begin{columns}
+			\begin{column}{0.48\textwidth}
+				\begin{itemize}
+					\item
+
+					      \begin{math}
+						      t=0:
+						      H\left(x,0\right)=
+						      x-a
+					      \end{math}
+					      es el sistema inicial donde la única solución es $x=a$.
+				\end{itemize}
+			\end{column}
+			\begin{column}{0.48\textwidth}
+				\begin{itemize}
+					\item
+
+					      \begin{math}
+						      t=1:
+						      H\left(x,1\right)=
+						      F\left(x\right)=
+						      0
+					      \end{math}
+					      es el sistema de interés.
+				\end{itemize}
+			\end{column}
+		\end{columns}
 	\end{definition}
 	La suavidad de esta construcción de homotopía está garantizada por
 	el siguiente:
@@ -191,7 +227,7 @@
 	\begin{theorem}[Existencia de soluciones de un sistema no lineal]
 		Sean
 		\begin{math}
-			F\colon\mathbb{R}^{n}\times\mathbb{R}^{n}
+			F\colon\mathbb{R}^{n}\to\mathbb{R}^{n}
 		\end{math}
 		suave y $U\subset\mathbb{R}^{n}$ un conjunto compacto con
 		interior no vacío.
@@ -241,30 +277,55 @@
 	Otra función de homotopía comúnmente utilizada es
 	\begin{definition}[Homotopía de Newton]
 		La \alert{homotopía de Newton}
-		$H\colon\mathbb{R}^{n+1}\to\mathbb{R}^{n}$ viene dada
-		por
+		$H\colon\mathbb{R}^{n}\times\mathbb{R}\to\mathbb{R}^{n}$ viene
+		dada por
 		\begin{equation}\label{eq:newtonhomotopy}
 			H\left(x,t\right)\coloneqq
 			\left(1-t\right)
-			\left[F\left(x\right)-F\left(a\right)\right]+
-			tF\left(x\right),
+			\left[
+				F\left(x\right)-
+				F\left(a\right)
+				\right]+
+			tF\left(x\right)
 		\end{equation}
 		donde
 		\begin{math}
-			F\colon\mathbb{R}^{n}\times\mathbb{R}^{n}
+			F\colon\mathbb{R}^{n}\to\mathbb{R}^{n}
 		\end{math}
-		es el sistema suave de interés, y
-		$a\in\mathbb{R}^{n}$ es un punto elegido genéricamente.
+		es el sistema suave de interés y $a\in\mathbb{R}^{n}$ es un punto
+		elegido genéricamente.
+		Entonces, si
 	\end{definition}
-	Claramente, en $t=1$, $H\left(x,1\right)=F\left(x\right)=0$, y en
-	$t=0$, el sistema inicial es
-	\begin{math}
-		H\left(x,0\right)=
-		F\left(x\right)-F\left(a\right)=
-		0
-	\end{math}
-	para el cual $a$ es solución.
-	Como antes, si $H$ satisface la condición de suavidad, entonces el
+
+	\begin{columns}
+		\begin{column}{0.28\textwidth}
+			\begin{itemize}
+				\item
+
+				      \begin{math}
+					      t=1:
+					      H\left(x,1\right)=
+					      F\left(x\right)=
+					      0.
+				      \end{math}
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.68\textwidth}
+			\begin{itemize}
+				\item
+
+				      \begin{math}
+					      t=0:
+					      H\left(x,0\right)=
+					      F\left(x\right)-F\left(a\right)=
+					      0
+				      \end{math}
+				      es el sistema inicial donde $a$ es solución.
+			\end{itemize}
+		\end{column}
+	\end{columns}
+
+	Si $H$ satisface la condición de suavidad, entonces el
 	conjunto solución de $H\left(x,t\right)=0\in\mathbb{R}^{n+1}$.
 
 	Vale la pena señalar la estrecha conexión entre la homotopía de
@@ -272,20 +333,28 @@
 	lineales: Derivando ambos lados de $H\left(x,t\right)=0$ dado
 	por~\eqref{eq:newtonhomotopy} se obtiene el problema de valor
 	inicial
-	\begin{align*}
-		\dot{x}\left(t\right) & =
-		-{\left(DF\left(x\left(t\right)\right)\right)}^{-1}
-		F\left(a\right)            \\
-		x\left(0\right)       & =a
-	\end{align*}
+	\begin{equation*}
+		\left\{
+		\begin{aligned}
+			\dot{x}\left(t\right) & =
+			-{\left(DF\left(x\left(t\right)\right)\right)}^{-1}
+			F\left(a\right)            \\
+			x\left(0\right)       & =a
+		\end{aligned}
+		\right.
+	\end{equation*}
 	en dominios en los que $DF\left(x\right)$ es no singular.
-	Aplicando el método de Euler en $t=0$ con tamaño de paso $1$ a la
-	EDO anterior desde el punto inicial $x=a$, la aproximación de
-	$x\left(1\right)$ se convierte en
+	Aplicando el \alert{método de Euler} en $t=0$ con tamaño de paso
+	$1$ a la EDO anterior desde el punto inicial $x=a$, la aproximación
+	de $x\left(1\right)$ se convierte en
 	\begin{equation*}
 		x\left(1\right)=
-		a-{\left(DF\left(a\right)\right)}^{-1}F\left(a\right).
+		a-{\left(DF\left(a\right)\right)}^{-1}F\left(a\right)
 	\end{equation*}
+	que es precisamente una única iteración del método de Newton.
+	Por lo tanto, la iteración de Newton puede considerarse como la
+	aplicación del método de Euler con tamaño de paso $1$ en la curva
+	solución dada por la homotopía de Newton~\eqref{eq:newtonhomotopy}.
 \end{frame}
 
 \begin{frame}
@@ -389,7 +458,22 @@
 	\end{enumerate}
 
 	\begin{solution}
-		.
+		Sea
+		\begin{align*}
+			F\colon\mathbb{R}^{3} & \longrightarrow\mathbb{R}^{3} \\
+			\left(
+			x_{1},
+			x_{2},
+			x_{3}
+			\right)
+			                      & \longmapsto
+			\begin{bmatrix}
+				10x_{1}-2x^{2}_{2}-2x_{3}-5 \\
+				8x^2_{2}+4x^2_{3}-9         \\
+				8x_{2}x_{3}+4
+			\end{bmatrix}
+		\end{align*}
+		% el sistema no lineal suave de interés.
 	\end{solution}
 \end{frame}
 % https://www.repo.uni-hannover.de/bitstream/handle/123456789/6479/lima_spring_school_main_classes_on_numerical_modeling_Nov_3.pdf?sequence=1&isAllowed=y
