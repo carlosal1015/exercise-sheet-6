@@ -1,448 +1,9 @@
 \section{Pregunta N$^{\circ}$34\qquad Carlos Alonso Aznarán Laos}
 
-\begin{frame}
-	\frametitle{
-		Método de continuación homotópica para solucionar sistemas no
-		lineales
-	}
-
-	El problema de solucionar numéricamente un sistema de $n$
-	ecuaciones no lineales en $n$ variables $F\left(x\right)=0$
-	donde
-	\begin{math}
-		F\colon\mathbb{R}^{n}\to\mathbb{R}^{n}
-	\end{math}
-	aparece ampliamente en cálculos científicos.
-	Suponga que $F$ es suave, es decir, tiene tantas derivadas
-	parciales continuas como se requiera.
-	Un algoritmo conocido para este problema son las
-	\alert{iteraciones de Newton}:
-	\begin{equation*}
-		x^{\left(n+1\right)}=
-		x^{\left(n\right)}-
-		{\left(DF\left(x^{\left(n\right)}\right)\right)}^{-1}
-		F\left(x^{\left(n\right)}\right),\quad
-		n=0,1,2,\dotsc,\quad
-		x^{\left(0\right)}\in\mathbb{R}^{n}
-	\end{equation*}
-	donde
-	\begin{math}
-		DF\left(x^{\left(n\right)}\right)
-	\end{math}
-	es la \alert{matriz jacobiana} de $F$ en $x^{\left(n\right)}$.
-	Este algoritmo es \alert{local} en el sentido de que se requiere
-	una muy buena estimación de la solución correcta para la
-	convergencia del algoritmo.
-	Desafortunadamente, tal conocimiento sobre los de $F$ no suele
-	estar disponible a priori.
-	Como posible remedio, se define
-
-	\begin{definition}[Función de homotopía]
-		Decimos que
-		\begin{math}
-			H\colon
-			\mathbb{R}^{n+1}\times\mathbb{R}\to
-			\mathbb{R}^{n}
-		\end{math}
-		es una \alert{homotopía diferenciable} (tanto en $x$ como en $t$)
-		sii
-		\begin{equation*}
-			\forall x\in\mathbb{R}^{n}:
-			H\left(x,0\right)=
-			G\left(x\right),\quad
-			H\left(x,1\right)=
-			F\left(x\right)
-		\end{equation*}
-		donde
-		\begin{math}
-			G\colon\mathbb{R}^{n}\to\mathbb{R}^{n}
-		\end{math}
-		es suave y sus ceros se pueden obtener fácilmente.
-		Sea $x_{0}$ un cero de $G\left(x\right)=0$.
-		Entonces, si
-	\end{definition}
-
-	\begin{columns}
-		\begin{column}{0.48\textwidth}
-			\begin{itemize}
-				\item
-
-				      \begin{math}
-					      t=0:
-					      H\left(x,0\right)=
-					      0
-				      \end{math}
-				      tiene una única solución $x=x_{0}$.
-
-				\item
-
-				      \begin{math}
-					      t=1:
-					      H\left(x,1\right)=
-					      0
-				      \end{math}
-				      concuerda con
-				      $F\left(x\right)=0$.
-			\end{itemize}
-		\end{column}
-		\begin{column}{0.48\textwidth}
-			\begin{itemize}
-				\item
-
-				      $t\in\mathbb{R}: x\left(t\right)$ es solución de
-				      $H\left(x\left(t\right),t\right)=0$, entonces bajo
-				      ciertas condiciones generará una curva suave.
-			\end{itemize}
-		\end{column}
-	\end{columns}
-
-	\
-
-	Si uno puede trazar con éxito esta curva suave $x\left(t\right)$
-	desde $t=0$ donde $x\left(0\right)=x_{0}$ continuamente, entonces
-	cuando $t=1$, se obtiene una solución $x\left(1\right)=x$
-	de $F\left(x\right)=0$.
-\end{frame}
-
-\begin{frame}
-	\begin{alertblock}{Observación}
-		Se puede considerar como una deformación entre dos sistemas
-		$G\left(x\right)$ y $F\left(x\right)$ dentro una familia de
-		sistemas.
-		La curva solución definida por
-		\begin{math}
-			H\left(x,t\right)=0
-		\end{math}
-		a partir del punto
-		\begin{math}
-			\left(x_{0},0\right)
-		\end{math}
-		conducirá a soluciones al sistema de interés
-		\begin{math}
-			F\left(x\right)=
-			0
-		\end{math}
-		cuando esta curva suave cruce el plano
-		\begin{math}
-			\mathbb{R}^{n}\times\mathbb{R}
-		\end{math}
-		definida por $t=1$.
-	\end{alertblock}
-	\begin{figure}[ht!]
-		\centering
-		\includegraphics[width=0.65\paperwidth]{homotopy}
-		\caption{
-			Una curva suave definida por $H\left(x,t\right)=0$ alcanzando
-			una solución $x^{\ast}$ del sistema objetivo.
-		}
-	\end{figure}
-
-	\begin{definition}[Valor regular]
-		Sea $F\colon\mathbb{R}^{n}\to\mathbb{R}^{p}$ suave.
-		Un punto $y\in\mathbb{R}^{p}$ es \alert{valor regular} de $F$ sii
-		% \coloneqq\left\{x\in\mathbb{R}^{n}\mid F\left(x\right)=y\right\}
-		\begin{math}
-			\forall x\in F^{-1}\left(\left\{y\right\}\right):
-			\operatorname{Imag}\left(DF\left(x\right)\right)=
-			\mathbb{R}^{p}
-		\end{math}.
-		% donde $DF\left(x\right)\in\mathbb{R}^{n\times p}$ es la matriz
-		% jacobiana de $F$, que consiste de todas las derivadas parciales
-		% de $F\left(x\right)$ con respecto a
-		% $x=\left(x_{1},\dotsc,x_{n}\right)$.
-	\end{definition}
-
-	$0\in\mathbb{R}^{n}$ es un valor regular de $H$ siempre que
-	la matriz jacobiana $DH\in\mathbb{R}^{n\times n+1}$ de $H$ con
-	respecto a $\left(x,t\right)$ es de rango $n$ (rango fila completo)
-	para cualquier
-	\begin{math}
-		\left(x,t\right)\in
-		H^{-1}\left(\left\{0\right\}\right)\subset
-		\mathbb{R}^{n}\times\mathbb{R}
-	\end{math}.
-	Esta condición permite la continuación de una solución de un solo
-	sistema en la deformación en una curva solución.
-\end{frame}
-
-\begin{frame}
-	\begin{definition}[Homotopía de punto fijo]
-		Sean
-		\begin{math}
-			F\colon\mathbb{R}^{n}\to\mathbb{R}^{n}
-		\end{math}
-		y
-		\begin{math}
-			x\in\mathbb{R}^{n}
-		\end{math}.
-		Una de las homotopías más sencillas para encontrar soluciones de
-		$F\left(x\right)=0$ es la \alert{homotopía de punto fijo} dada
-		por
-		\begin{equation*}
-			H\left(x,t\right)\coloneqq
-			\left(1-t\right)\left(x-a\right)+tF\left(x\right)
-		\end{equation*}
-		donde $a\in\mathbb{R}^{n}$ y
-		$t\in\left[0,1\right]\subset\mathbb{R}$.
-		Entonces, si
-		\begin{columns}
-			\begin{column}{0.48\textwidth}
-				\begin{itemize}
-					\item
-
-					      \begin{math}
-						      t=0:
-						      H\left(x,0\right)=
-						      x-a
-					      \end{math}
-					      es el sistema inicial donde la única solución es $x=a$.
-				\end{itemize}
-			\end{column}
-			\begin{column}{0.48\textwidth}
-				\begin{itemize}
-					\item
-
-					      \begin{math}
-						      t=1:
-						      H\left(x,1\right)=
-						      F\left(x\right)=
-						      0
-					      \end{math}
-					      es el sistema de interés.
-				\end{itemize}
-			\end{column}
-		\end{columns}
-	\end{definition}
-	La suavidad de esta construcción de homotopía está garantizada por
-	el siguiente:
-	\begin{theorem}[Teorema de Sard]
-		Sean $X\subset\mathbb{R}^{n_{1}}$ e $Y\subset\mathbb{R}^{n_{2}}$
-		dos conjuntos abiertos, $\phi\colon X\times Y\to\mathbb{R}^{m}$
-		suave.
-		Si $v\in\mathbb{R}^{m}$ es un punto regular de $\phi$, entonces
-		para casi todo $y\in Y$, $v$ es un punto regular de
-		$\pi_{Y}\colon X\to\mathbb{R}^{m}$.
-	\end{theorem}
-
-	\begin{theorem}[Existencia de soluciones de un sistema no lineal]
-		Sean
-		\begin{math}
-			F\colon\mathbb{R}^{n}\to\mathbb{R}^{n}
-		\end{math}
-		suave y $U\subset\mathbb{R}^{n}$ un conjunto compacto con
-		interior no vacío.
-		Si para cualquier $x\in\partial U$, ${F\left(x\right)}^{T}\left(x-a\right)>0$,
-		entonces existe un $x^{\ast}\in\operatorname{int}\left(U\right)$ tal que
-		$F\left(x^{\ast}\right)=0$.
-	\end{theorem}
-
-	\begin{proof}
-		Sea
-		\begin{math}
-			H\colon
-			\mathbb{R}^{n}\times\left[0,1\right]\to
-			\mathbb{R}^{n}
-		\end{math}
-		una homotopía definida como
-		\begin{math}
-			H\left(x,t\right)\coloneqq
-			\left(1-t\right)\left(x-a\right)+
-			tF\left(x\right).
-		\end{math}
-		Como antes, para casi todo $a$, $H$ satisface la condición de
-		suavidad para $t\neq 1$.
-		Esto garantiza que el conjunto solución de $H\left(x,t\right)=0$
-		consiste de todas las curvas suaves.
-		Por simple inspección, $a$ es la única solución de $H\left(x,t\right)=0$.
-		También, si $x\in\partial U$, entonces
-		\begin{equation*}
-			{H\left(x,t\right)}^{T}\left(x-a\right)=
-			\left(1-t\right){\left\|x-a\right\|}^{2}+
-			t{F\left(x\right)}^{T}\left(x-a\right)>0.
-		\end{equation*}
-		Entonces, la curva solución definida por $H\left(x,t\right)=0$
-		que emana de $\left(a,0\right)$ no puede volver a $t=0$, y no
-		puede alcanzar la frontera de $U$.
-		Por lo tanto, debe extenderse a $t=1$ dentro del interior de $U$,
-		dando un punto
-		\begin{math}
-			\left(x^{\ast},1\right)\in
-			H^{-1}\left(\left\{0\right\}\right)
-		\end{math}
-		con $x^{\ast}\in U$ que satisface $F\left(x^{\ast}\right)=0$.
-	\end{proof}
-\end{frame}
-
-\begin{frame}
-	Otra función de homotopía comúnmente utilizada es
-	\begin{definition}[Homotopía de Newton]
-		La \alert{homotopía de Newton}
-		$H\colon\mathbb{R}^{n}\times\mathbb{R}\to\mathbb{R}^{n}$ viene
-		dada por
-		\begin{equation}\label{eq:newtonhomotopy}
-			H\left(x,t\right)\coloneqq
-			\left(1-t\right)
-			\left[
-				F\left(x\right)-
-				F\left(a\right)
-				\right]+
-			tF\left(x\right)
-		\end{equation}
-		donde
-		\begin{math}
-			F\colon\mathbb{R}^{n}\to\mathbb{R}^{n}
-		\end{math}
-		es el sistema suave de interés y $a\in\mathbb{R}^{n}$ es un punto
-		elegido genéricamente.
-		Entonces, si
-	\end{definition}
-
-	\begin{columns}
-		\begin{column}{0.28\textwidth}
-			\begin{itemize}
-				\item
-
-				      \begin{math}
-					      t=1:
-					      H\left(x,1\right)=
-					      F\left(x\right)=
-					      0.
-				      \end{math}
-			\end{itemize}
-		\end{column}
-		\begin{column}{0.68\textwidth}
-			\begin{itemize}
-				\item
-
-				      \begin{math}
-					      t=0:
-					      H\left(x,0\right)=
-					      F\left(x\right)-F\left(a\right)=
-					      0
-				      \end{math}
-				      es el sistema inicial donde $a$ es solución.
-			\end{itemize}
-		\end{column}
-	\end{columns}
-
-	Si $H$ satisface la condición de suavidad, entonces el
-	conjunto solución de $H\left(x,t\right)=0\in\mathbb{R}^{n+1}$.
-
-	Vale la pena señalar la estrecha conexión entre la homotopía de
-	Newton y el conocido método de Newton para resolver ecuaciones no
-	lineales: Derivando ambos lados de $H\left(x,t\right)=0$ dado
-	por~\eqref{eq:newtonhomotopy} se obtiene el problema de valor
-	inicial
-	\begin{equation*}
-		\left\{
-		\begin{aligned}
-			\dot{x}\left(t\right) & =
-			-{\left(DF\left(x\left(t\right)\right)\right)}^{-1}
-			F\left(a\right)            \\
-			x\left(0\right)       & =a
-		\end{aligned}
-		\right.
-	\end{equation*}
-	en dominios en los que $DF\left(x\right)$ es no singular.
-	Aplicando el \alert{método de Euler} en $t=0$ con tamaño de paso
-	$1$ a la EDO anterior desde el punto inicial $x=a$, la aproximación
-	de $x\left(1\right)$ se convierte en
-	\begin{equation*}
-		x\left(1\right)=
-		a-{\left(DF\left(a\right)\right)}^{-1}F\left(a\right)
-	\end{equation*}
-	que es precisamente una única iteración del método de Newton.
-	Por lo tanto, la iteración de Newton puede considerarse como la
-	aplicación del método de Euler con tamaño de paso $1$ en la curva
-	solución dada por la homotopía de Newton~\eqref{eq:newtonhomotopy}.
-\end{frame}
-
-\begin{frame}
-	\frametitle{Método explícito de Runge-Kutta}
-	La derivación sistemática de los métodos de un paso de orden
-	superior se remonta a Runge y Kutta, quienes desarrollaron métodos
-	especiales de tercer y cuarto orden hace más de $122$ años.
-
-	\begin{definition}[Runge-Kutta explícito de $m$ etapas]
-		Un método se denomina \alert{Runge-Kutta explícito de $m$ etapas}
-		sii la función del método $f_{h}$ es una combinación lineal de
-		valores de la función $f\left(x,y\right)$ en diferentes puntos
-		$\left(x,y\right)$ es
-		\begin{math}
-			f_{h}\left(x,y\right)=
-			\gamma_{1}k_{1}\left(x,y\right)+
-			\gamma_{2}k_{2}\left(x,y\right)+
-			\cdots+
-			\gamma_{m}k_{m}\left(x,y\right)
-		\end{math}
-		con
-		\begin{columns}
-			\begin{column}{0.48\textwidth}
-				\begin{align*}
-					k_{1}\left(x,y\right) & =
-					f\left(
-					x,y
-					\right)                                 \\
-					k_{2}\left(x,y\right) & =
-					f\left(
-					x+\alpha_{2}h,
-					y+h\beta_{21}k_{1}\left(x,y\right)
-					\right).                                \\
-					k_{3}\left(x,y\right) & =
-					f\left(
-					x+\alpha_{3}h,
-					y+h\left[\beta_{31}k_{1}\left(x,y\right)+\beta_{32}k_{2}\left(x,y\right)\right]
-					\right)                                 \\
-					                      & \vdotswithin{=} \\
-					k_{m}\left(x,y\right) & =
-					f\left(x+\alpha_{m}h,y+h\sum\limits_{j=1}^{m-1}\beta_{mj}k_{j}\left(x,y\right)\right),
-				\end{align*}
-			\end{column}
-			\begin{column}{0.48\textwidth}
-				\begin{equation*}
-					\begin{array}
-						{c|ccccc}
-						0                                                                    \\
-						\alpha_{2} & \beta_{21}                                              \\
-						\alpha_{3} & \beta_{31} & \beta_{32}                                 \\
-						\vdots     & \vdots     &            & \ddots                        \\
-						\alpha_{m} & \beta_{m1} & \beta_{m2} &        & \beta_{mm-1}         \\
-						\hline
-						           & h_{1}      & h_{2}      & \cdots & h_{m-1}      & h_{m}
-					\end{array}
-				\end{equation*}
-				Este método será \alert{consistente} sii
-				\begin{math}
-					\sum\limits_{j=1}^{m}
-					h_{j}=1
-				\end{math}.
-			\end{column}
-		\end{columns}
-		donde $x=x_{j}$, $y=u_{j}$ y $h=h_{j}$ para el paso $j$.
-
-		Por lo tanto, el método se determina fijando
-		$2m-1+\dfrac{m\left(m-1\right)}{2}$ parámetros
-		\begin{equation*}
-			\left\{
-			\gamma_{1},\dotsc,\gamma_{m},
-			\alpha_{2},\alpha_{3},\dotsc,\alpha_{m},
-			\beta_{21},\beta_{31},\beta_{41}\dotsc,\beta_{mm-1}
-			\right\}\subset
-			\mathbb{R}.
-		\end{equation*}
-	\end{definition}
-\end{frame}
-
-\begin{frame}
-	El método clásico de Runge-Kutta es
-	\begin{align*}
-		k_{1}   & = f\left(x_{j},u_{j}\right).                                        \\
-		k_{2}   & = f\left(x_{j}+\dfrac{h_{j}}{2},u_{j}+\dfrac{h_{j}}{2}k_{1}\right). \\
-		k_{3}   & = f\left(x_{j}+\dfrac{h_{j}}{2},u_{j}+\dfrac{h_{j}}{2}k_{2}\right). \\
-		k_{4}   & = f\left(x_{j}+h_{j},u_{j}+h_{j}k_{3}\right).                       \\
-		u_{j+1} & = u_{j}+\frac{h_{j}}{6}\left(k_{1}+2k_{2}+2k_{3}+k_{4}\right).      \\
-	\end{align*}
-\end{frame}
+\input{homotopy}
+% \input{homotopy-fixed-point}
+\input{homotopy-newton}
+\input{runge-kutta}
 
 \begin{frame}
 	\begin{enumerate}\setcounter{enumi}{33}
@@ -458,24 +19,71 @@
 	\end{enumerate}
 
 	\begin{solution}
-		Sea
-		\begin{align*}
-			F\colon\mathbb{R}^{3} & \longrightarrow\mathbb{R}^{3} \\
-			\left(
-			x_{1},
-			x_{2},
-			x_{3}
-			\right)
-			                      & \longmapsto
+		Sean $F$, $DF$, $DF^{-1}$, una función suave, la matriz jacobiana
+		de $F$ en $x$ y la inversa de la matriz jacobiana de $F$ en $x$,
+		respectivamente.
+		\begin{equation*}
+			\begin{aligned}
+				F\colon\mathbb{R}^{3} & \longrightarrow\mathbb{R}^{3} \\
+				\begin{bmatrix}
+					x_{1} \\
+					x_{2} \\
+					x_{3}
+				\end{bmatrix}
+				                      & \longmapsto
+				\begin{bmatrix}
+					10x_{1}-2x^{2}_{2}-2x_{3}-5 \\
+					8x^2_{2}+4x^2_{3}-9         \\
+					8x_{2}x_{3}+4
+				\end{bmatrix}
+			\end{aligned},
+			DF\left(x\right)=
 			\begin{bmatrix}
-				10x_{1}-2x^{2}_{2}-2x_{3}-5 \\
-				8x^2_{2}+4x^2_{3}-9         \\
-				8x_{2}x_{3}+4
+				10 & -4x_{2} & -2     \\
+				0  & 16x_{2} & 8x_{3} \\
+				0  & 8x_{3}  & 8x_{2}
+			\end{bmatrix},
+			{\left(DF\left(x\right)\right)}^{-1}\left(x\right)=
+			\begin{bmatrix}
+				\dfrac{1}{10} & \dfrac{2x^{2}_{2} - x_{3}}{80x^{2}_{2} - 40x^{2}_{3}} & \dfrac{-x_{2}x_{3} + x_{2}}{40x^{2}_{2} - 20x^{2}_{3}} \\
+				0             & \dfrac{x_{2}}{16x^{2}_{2} - 8x^{2}_{3}}               & -\dfrac{x_{3}}{16x^{2}_{2} - 8x^{2}_{3}}               \\
+				0             & -\dfrac{x_{3}}{16x^{2}_{2} - 8x^{2}_{3}}              & \dfrac{x_{2}}{8x^{2}_{2} - 4x^{2}_{3}}
+			\end{bmatrix}.
+		\end{equation*}
+		Si el punto escogido es
+		\begin{math}
+			a=
+			\begin{bmatrix}
+				0 \\
+				0 \\
+				0
 			\end{bmatrix}
-		\end{align*}
+			\in\mathbb{R}^{3}
+		\end{math}
+		y la evaluación de $a$ vía $F$ es
+		\begin{math}
+			F\left(a\right)=
+			\begin{bmatrix}
+				-5 \\
+				-9 \\
+				4
+			\end{bmatrix}
+		\end{math},
+		entonces el problema de valor inicial resultante es
+		\begin{equation*}
+			\left\{
+			\begin{aligned}
+				\dot{x}\left(t\right) & =
+				-{\left(DF\left(x\left(t\right)\right)\right)}^{-1}
+				F\left(a\right),\quad t\in\left[0,1\right] \\
+				x\left(0\right)       & =a
+			\end{aligned}
+			\right.
+		\end{equation*}
 		% el sistema no lineal suave de interés.
 	\end{solution}
 \end{frame}
+
 % https://www.repo.uni-hannover.de/bitstream/handle/123456789/6479/lima_spring_school_main_classes_on_numerical_modeling_Nov_3.pdf?sequence=1&isAllowed=y
 % https://www.intlpress.com/site/pub/files/_fulltext/journals/cis/2015/0015/0002/CIS-2015-0015-0002-a001.pdf
 % nonlinear homotopy continuation method

@@ -1,0 +1,83 @@
+\begin{frame}
+	Una función de homotopía comúnmente utilizada es
+	\begin{definition}[Homotopía de Newton]
+		La \alert{homotopía de Newton}
+		$H\colon\mathbb{R}^{n}\times\mathbb{R}\to\mathbb{R}^{n}$ viene
+		dada por
+		\begin{equation}\label{eq:newtonhomotopy}
+			H\left(x,t\right)\coloneqq
+			\left(1-t\right)
+			\left[
+				F\left(x\right)-
+				F\left(a\right)
+				\right]+
+			tF\left(x\right)
+		\end{equation}
+		donde
+		\begin{math}
+			F\colon\mathbb{R}^{n}\to\mathbb{R}^{n}
+		\end{math}
+		es el sistema suave de interés y $a\in\mathbb{R}^{n}$ es un punto
+		elegido genéricamente.
+		Entonces, si
+	\end{definition}
+
+	\begin{columns}
+		\begin{column}{0.28\textwidth}
+			\begin{itemize}
+				\item
+
+				      \begin{math}
+					      t=1:
+					      H\left(x,1\right)=
+					      F\left(x\right)=
+					      0.
+				      \end{math}
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.68\textwidth}
+			\begin{itemize}
+				\item
+
+				      \begin{math}
+					      t=0:
+					      H\left(x,0\right)=
+					      F\left(x\right)-F\left(a\right)=
+					      0
+				      \end{math}
+				      es el sistema inicial donde $a$ es solución.
+			\end{itemize}
+		\end{column}
+	\end{columns}
+
+	Si $H$ satisface la condición de suavidad, entonces el
+	conjunto solución de $H\left(x,t\right)=0\in\mathbb{R}^{n+1}$.
+
+	\begin{alertblock}{Conexión entre la homotopía de Newton y el método de Newton para resolver un sistema no lineal}
+		Derivando ambos lados de $H\left(x,t\right)=0$ dado
+		por~\eqref{eq:newtonhomotopy} se obtiene el problema de valor
+		inicial
+		\begin{equation*}
+			\left\{
+			\begin{aligned}
+				\dot{x}\left(t\right) & =
+				-{\left(DF\left(x\left(t\right)\right)\right)}^{-1}
+				F\left(a\right),\quad t\in\left[0,1\right] \\
+				x\left(0\right)       & =a
+			\end{aligned}
+			\right.
+		\end{equation*}
+		en dominios en los que $DF\left(x\right)$ es no singular.
+		Aplicando el \alert{método de Euler} en $t=0$ con tamaño de paso
+		$1$ a la EDO anterior desde el punto inicial $x=a$, la aproximación
+		de $x\left(1\right)$ se convierte en
+		\begin{equation*}
+			x\left(1\right)=
+			a-{\left(DF\left(a\right)\right)}^{-1}F\left(a\right)
+		\end{equation*}
+		que es precisamente una única iteración del método de Newton.
+		Por lo tanto, la iteración de Newton puede considerarse como la
+		aplicación del método de Euler con tamaño de paso $1$ en la curva
+		solución dada por la homotopía de Newton~\eqref{eq:newtonhomotopy}.
+	\end{alertblock}
+\end{frame}
