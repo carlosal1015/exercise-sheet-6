@@ -54,8 +54,8 @@
 		\begin{math}
 			a=
 			\begin{bmatrix}
-				0 \\
-				0 \\
+				1 \\
+				1 \\
 				0
 			\end{bmatrix}
 			\in\mathbb{R}^{3}
@@ -64,8 +64,8 @@
 		\begin{math}
 			F\left(a\right)=
 			\begin{bmatrix}
-				-5 \\
-				-9 \\
+				3  \\
+				-1 \\
 				4
 			\end{bmatrix}
 		\end{math},
@@ -82,6 +82,27 @@
 		\end{equation*}
 		% el sistema no lineal suave de interés.
 	\end{solution}
+\end{frame}
+
+\begin{frame}[fragile]
+	\begin{columns}
+		\begin{column}{0.48\textwidth}
+			\inputminted[fontsize=\tiny,firstline=1,lastline=9]{python}{homotopy.py}
+			\inputminted[fontsize=\tiny,firstline=12,lastline=17]{python}{homotopy.py}
+			\inputminted[fontsize=\tiny,firstline=20,lastline=43]{python}{homotopy.py}
+		\end{column}
+		\begin{column}{0.48\textwidth}
+			\inputminted[fontsize=\tiny,firstline=46,lastline=50]{python}{homotopy.py}
+
+			\
+
+			Resultado:
+
+			\
+
+			\inputminted[fontsize=\tiny,firstline=,lastline=11]{text}{resultado_pregunta_34.txt}
+		\end{column}
+	\end{columns}
 \end{frame}
 
 % https://www.repo.uni-hannover.de/bitstream/handle/123456789/6479/lima_spring_school_main_classes_on_numerical_modeling_Nov_3.pdf?sequence=1&isAllowed=y
