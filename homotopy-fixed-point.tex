@@ -1,22 +1,23 @@
 \begin{frame}
+	Una de las homotopías más sencillas para encontrar soluciones de
+	$F\left(x\right)=0$ es la
 	\begin{definition}[Homotopía de punto fijo]
 		Sean
 		\begin{math}
-			F\colon\mathbb{R}^{n}\to\mathbb{R}^{n}
+			F\colon
+			\mathbb{R}^{n}\to
+			\mathbb{R}^{n}
 		\end{math}
-		y
+		suave y
 		\begin{math}
-			x\in\mathbb{R}^{n}
+			a\in\mathbb{R}^{n}
 		\end{math}.
-		Una de las homotopías más sencillas para encontrar soluciones de
-		$F\left(x\right)=0$ es la \alert{homotopía de punto fijo} dada
-		por
+		La \alert{homotopía de punto fijo} es definida como
 		\begin{equation*}
-			H\left(x,t\right)\coloneqq
-			\left(1-t\right)\left(x-a\right)+tF\left(x\right)
+			H\left(t,x\right)\coloneqq
+			\left(1-t\right)\left(x-a\right)+
+			tF\left(x\right).
 		\end{equation*}
-		donde $a\in\mathbb{R}^{n}$ y
-		$t\in\left[0,1\right]\subset\mathbb{R}$.
 		Entonces, si
 		\begin{columns}
 			\begin{column}{0.48\textwidth}
@@ -25,10 +26,10 @@
 
 					      \begin{math}
 						      t=0:
-						      H\left(x,0\right)=
+						      H\left(0,x\right)=
 						      x-a
 					      \end{math}
-					      es el sistema inicial donde la única solución es $x=a$.
+					      tiene única solución $x=a$.
 				\end{itemize}
 			\end{column}
 			\begin{column}{0.48\textwidth}
@@ -37,7 +38,7 @@
 
 					      \begin{math}
 						      t=1:
-						      H\left(x,1\right)=
+						      H\left(1,x\right)=
 						      F\left(x\right)=
 						      0
 					      \end{math}
@@ -46,8 +47,10 @@
 			\end{column}
 		\end{columns}
 	\end{definition}
+
 	La suavidad de esta construcción de homotopía está garantizada por
-	el siguiente:
+	el siguiente
+
 	\begin{theorem}[Teorema de Sard]
 		Sean $X\subset\mathbb{R}^{n_{1}}$ e $Y\subset\mathbb{R}^{n_{2}}$
 		dos conjuntos abiertos, $\phi\colon X\times Y\to\mathbb{R}^{m}$
@@ -67,42 +70,51 @@
 		\end{math}
 		suave y $U\subset\mathbb{R}^{n}$ un conjunto compacto con
 		interior no vacío.
-		Si para cualquier $x\in\partial U$, ${F\left(x\right)}^{T}\left(x-a\right)>0$,
-		entonces existe un $x^{\ast}\in\operatorname{int}\left(U\right)$ tal que
-		$F\left(x^{\ast}\right)=0$.
+		Si para cualquier $x\in\partial U$,
+		\begin{math}
+			{\left(F\left(x\right)\right)}^{T}
+			\left(x-a\right)>
+			0
+		\end{math},
+		entonces existe un $x^{\ast}\in\operatorname{int}\left(U\right)$
+		tal que $F\left(x^{\ast}\right)=0$.
 	\end{theorem}
 
 	\begin{proof}
-		Sea
-		\begin{math}
-			H\colon
-			\mathbb{R}^{n}\times\left[0,1\right]\to
-			\mathbb{R}^{n}
-		\end{math}
-		una homotopía definida como
-		\begin{math}
-			H\left(x,t\right)\coloneqq
-			\left(1-t\right)\left(x-a\right)+
-			tF\left(x\right).
-		\end{math}
-		Como antes, para casi todo $a$, $H$ satisface la condición de
+		Sea $H$ una homotopía de punto fijo.
+		Entonces, para casi todo $a$, $H$ satisface la condición de
 		suavidad para $t\neq 1$.
-		Esto garantiza que el conjunto solución de $H\left(x,t\right)=0$
+		Esto garantiza que el conjunto solución de $H\left(t,x\right)=0$
 		consiste de todas las curvas suaves.
-		Por simple inspección, $a$ es la única solución de $H\left(x,t\right)=0$.
-		También, si $x\in\partial U$, entonces
-		\begin{equation*}
-			{H\left(x,t\right)}^{T}\left(x-a\right)=
+		Por simple inspección, $a$ es la única solución de
+		$H\left(t,x\right)=0$.
+		Si $x\in\partial U$, entonces
+		\begin{align*}
+			{\left(\alert{H\left(x\right)}\right)}^{T}\left(x-a\right) & =
+			{
+			\left(
+			\alert{
+					\left(1-t\right)\left(x-a\right)+
+					tF\left(x\right)
+				}
+			\right)
+			}^{T}\left(x-a\right)                                          \\
+			                                                           & =
+			\left(1-t\right)
+			{\left(x-a\right)}^{T}
+			\left(x-a\right)+
+			t{\left(F\left(x\right)\right)}^{T}\left(x-a\right)            \\
+			                                                           & =
 			\left(1-t\right){\left\|x-a\right\|}^{2}+
-			t{F\left(x\right)}^{T}\left(x-a\right)>0.
-		\end{equation*}
-		Entonces, la curva solución definida por $H\left(x,t\right)=0$
-		que emana de $\left(a,0\right)$ no puede volver a $t=0$, y no
+			t{\left(F\left(x\right)\right)}^{T}\left(x-a\right)>0.
+		\end{align*}
+		Entonces, la curva solución definida por $H\left(t,x\right)=0$
+		que emana de $\left(0,a\right)$ no puede volver a $t=0$, y no
 		puede alcanzar la frontera de $U$.
 		Por lo tanto, debe extenderse a $t=1$ dentro del interior de $U$,
 		dando un punto
 		\begin{math}
-			\left(x^{\ast},1\right)\in
+			\left(1,x^{\ast}\right)\in
 			H^{-1}\left(\left\{0\right\}\right)
 		\end{math}
 		con $x^{\ast}\in U$ que satisface $F\left(x^{\ast}\right)=0$.

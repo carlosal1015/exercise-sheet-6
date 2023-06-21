@@ -1,11 +1,20 @@
 \begin{frame}
 	Una función de homotopía comúnmente utilizada es
 	\begin{definition}[Homotopía de Newton]
+		Sean
+		\begin{math}
+			F\colon\mathbb{R}^{n}\to\mathbb{R}^{n}
+		\end{math}
+		suave y $a\in\mathbb{R}^{n}$.
 		La \alert{homotopía de Newton}
-		$H\colon\mathbb{R}^{n}\times\mathbb{R}\to\mathbb{R}^{n}$ viene
-		dada por
+		\begin{math}
+			H\colon
+			\left[0,1\right]\times\mathbb{R}^{n}\to
+			\mathbb{R}^{n}
+		\end{math}
+		es definida como
 		\begin{equation}\label{eq:newtonhomotopy}
-			H\left(x,t\right)\coloneqq
+			H\left(t,x\right)\coloneqq
 			\left(1-t\right)
 			\left[
 				F\left(x\right)-
@@ -13,12 +22,6 @@
 				\right]+
 			tF\left(x\right)
 		\end{equation}
-		donde
-		\begin{math}
-			F\colon\mathbb{R}^{n}\to\mathbb{R}^{n}
-		\end{math}
-		es el sistema suave de interés y $a\in\mathbb{R}^{n}$ es un punto
-		elegido genéricamente.
 		Entonces, si
 	\end{definition}
 
@@ -51,26 +54,65 @@
 	\end{columns}
 
 	Si $H$ satisface la condición de suavidad, entonces el
-	conjunto solución de $H\left(x,t\right)=0\in\mathbb{R}^{n+1}$.
+	conjunto solución de $H\left(t,x\right)=0\in\mathbb{R}^{n}$.
 
-	\begin{alertblock}{Conexión entre la homotopía de Newton y el método de Newton para resolver un sistema no lineal}
-		Derivando ambos lados de $H\left(x,t\right)=0$ dado
-		por~\eqref{eq:newtonhomotopy} se obtiene el problema de valor
-		inicial
+	\begin{alertblock}{
+			Conexión entre la homotopía de Newton y el método de Newton
+			para resolver un sistema no lineal
+		}
+		Derivando ambos lados de
 		\begin{equation*}
-			\left\{
-			\begin{aligned}
-				\dot{x}\left(t\right) & =
-				-{\left(DF\left(x\left(t\right)\right)\right)}^{-1}
-				F\left(a\right),\quad t\in\left[0,1\right] \\
-				x\left(0\right)       & =a
-			\end{aligned}
-			\right.
+			H\left(t,x\left(t\right)\right)=
+			\left(1-t\right)
+			\left[
+				F\left(x\right)-
+				F\left(a\right)
+				\right]+
+			tF\left(x\right)=
+			F\left(x\right)-
+			F\left(a\right)-
+			tF\left(x\right)+
+			tF\left(a\right)+
+			tF\left(x\right)=
+			F\left(x\left(t\right)\right)+
+			\left(t-1\right)
+			F\left(a\right)=0.
 		\end{equation*}
-		en dominios en los que $DF\left(x\right)$ es no singular.
+		dado por~\eqref{eq:newtonhomotopy} se obtiene
+		\begin{align*}
+			H_{t}\left(t,x\left(t\right)\right)+
+			H_{x}\left(t,x\left(t\right)\right)
+			\dot{x}\left(t\right) & =0           \\
+			H_{x}\left(t,x\left(t\right)\right)
+			\dot{x}\left(t\right) & =
+			-H_{t}\left(t,x\left(t\right)\right) \\
+			\dot{x}\left(t\right) & =
+			-{\left(H_{x}\left(t,x\left(t\right)\right)\right)}^{-1}
+			H_{t}\left(t,x\left(t\right)\right)
+		\end{align*}
+		Pero, $F\left(x\left(0\right)\right)=F\left(a\right)$ sii
+		$x\left(0\right)=a$.
+	\end{alertblock}
+\end{frame}
+
+\begin{frame}
+	el problema de valor
+	inicial
+	\begin{equation}\label{eq:ivp}
+		\left\{
+		\begin{aligned}
+			\dot{x}\left(t\right) & =
+			-{\left(DF\left(x\left(t\right)\right)\right)}^{-1}
+			F\left(a\right)            \\
+			x\left(0\right)       & =a
+		\end{aligned}
+		\right.
+	\end{equation}
+	en dominios en los que $DF\left(x\right)$ es no singular.
+	\begin{alertblock}{Observación}
 		Aplicando el \alert{método de Euler} en $t=0$ con tamaño de paso
-		$1$ a la EDO anterior desde el punto inicial $x=a$, la aproximación
-		de $x\left(1\right)$ se convierte en
+		$1$ a~\eqref{eq:ivp} desde el punto inicial $x=a$, la
+		aproximación de $x\left(1\right)$ se convierte en
 		\begin{equation*}
 			x\left(1\right)=
 			a-{\left(DF\left(a\right)\right)}^{-1}F\left(a\right)
@@ -80,4 +122,11 @@
 		aplicación del método de Euler con tamaño de paso $1$ en la curva
 		solución dada por la homotopía de Newton~\eqref{eq:newtonhomotopy}.
 	\end{alertblock}
+
+	\begin{equation*}
+		x_{n+1}=
+		x_{n}-
+		{\left(f^{\prime}\left(x_{n}\right)\right)}^{-1}
+		f\left(x_{n}\right)
+	\end{equation*}
 \end{frame}
