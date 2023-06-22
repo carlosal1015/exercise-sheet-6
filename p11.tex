@@ -50,8 +50,6 @@
 			c_{n-j}t^{j}
 		\end{equation*}
 	\end{block}
-
-	\alert{método de Krylov}.
 \end{frame}
 
 \begin{frame}
@@ -59,9 +57,10 @@
 	característico es
 	\begin{equation*}
 		a\left(\lambda\right)=
-		\det\left(\lambda I_{n}-A\right)=
-		\lambda^{n}+a_{1}\lambda^{n-1}+\cdots+
-		a_{n-1}\lambda^{n}+a_{n},
+		\left(-1\right)^{n}
+		\left[
+		\lambda^{n}-a_{1}\lambda^{n-1}-\cdots-a_{n-1}\lambda-a_{n}
+		\right],
 	\end{equation*}
 	donde $I_{n}$ denota la matriz identidad de orden $n$, y sea
 	\begin{equation*}
@@ -76,14 +75,20 @@
 	\end{equation*}
 
 	\begin{align*}
-		a_{1} & =-\operatorname{tr}\left(A\right),                   &
-		a_{k} & =-\frac{1}{k}\operatorname{tr}\left(AB_{k-1}\right),
-		      & k\in\left\{2,\dotsc,n\right\}.                         \\
-		B_{1} & = A + a_{1}I_{n},                                    &
+		a_{1} & =-\operatorname{tr}\left(A\right),                    &
+		a_{k} & =-\dfrac{1}{k}\operatorname{tr}\left(AB_{k-1}\right),
+		      & k\in\left\{2,\dotsc,n\right\}.                          \\
+		B_{1} & = A + a_{1}I_{n},                                     &
 		B_{k} & =AB_{k-1}+a_{k}I_{n},
 		      & k\in\left\{2,\dotsc,n-1\right\}.
 	\end{align*}
 	donde $\operatorname{tr}\left(A\right)$ denota la traza de $A$.
+\end{frame}
+
+\begin{frame}
+	\frametitle{Método de Krylov}
+
+	.
 \end{frame}
 
 \begin{frame}
@@ -158,11 +163,11 @@
 			      \begin{equation*}
 				      \begin{aligned}
 					      x^{\left(k+1\right)}_{1} & =
-					      0.6x^{\left(k\right)}_{1}+
-					      0.2x_{2}^{\left(k\right)}    \\
+					      \dfrac{3}{5}x^{\left(k\right)}_{1}+
+					      \dfrac{1}{5}x_{2}^{\left(k\right)} \\
 					      x^{\left(k+1\right)}_{2} & =
-					      0.4x^{\left(k\right)}_{1}+
-					      0.8x^{\left(k\right)}_{2}
+					      \dfrac{2}{5}x^{\left(k\right)}_{1}+
+					      \dfrac{4}{5}x^{\left(k\right)}_{2}
 				      \end{aligned}\iff
 				      \underbrace{
 					      \begin{bNiceMatrix}
@@ -172,10 +177,12 @@
 				      }_{\displaystyle x^{\left(k+1\right)}}
 				      =
 				      \underbrace{
-					      \begin{bNiceMatrix}
-						      0.6 & 0.2 \\
-						      0.4 & 0.8
-					      \end{bNiceMatrix}
+					      \alert{
+						      \begin{bNiceMatrix}
+							      \dfrac{3}{5} & \dfrac{1}{5} \\
+							      \dfrac{2}{5} & \dfrac{4}{5}
+						      \end{bNiceMatrix}
+					      }
 				      }_{\displaystyle A}
 				      \underbrace{
 					      \begin{bNiceMatrix}
@@ -190,14 +197,15 @@
 
 			\item
 
-			      Los coeficientes del polinomio característico de $A$
-			      \begin{equation*}
+			      Los coeficientes del polinomio característico de
+			      $A\in\mathbb{R}^{2\times 2}$
+			      \begin{math}
 				      a\left(\lambda\right)=
-				      \lambda^{n}+a_{1}\lambda^{n-1}+\cdots+
-				      a_{n-1}\lambda^{n}+a_{n}
-			      \end{equation*}
-			      se puede determinar a través del
-			      método de Faddeev-LeVerrier y Krylov.
+				      \left(-1\right)^{2}
+				      \left[\lambda^{2}-a_{1}\lambda-a_{2}\right]
+			      \end{math}
+			      se puede determinar a través del método de
+			      Faddeev-LeVerrier y Krylov.
 		\end{enumerate}
 	\end{solution}
 \end{frame}
@@ -207,13 +215,56 @@
 		\begin{enumerate}[c)]
 			\item
 
-			      Método de Leverrier
+			      \alert{Método de Faddeev-LeVerrier.} Si
+			      \begin{math}
+				      A=\begin{bNiceMatrix}
+					      \dfrac{3}{5} & \dfrac{1}{5} \\
+					      \dfrac{2}{5} & \dfrac{4}{5}
+				      \end{bNiceMatrix}
+			      \end{math},
+			      entonces
+			      \begin{align*}
+				      B_{1}                            & \leftarrow
+				      A=\begin{bNiceMatrix}
+					        \dfrac{3}{5} & \dfrac{1}{5} \\
+					        \dfrac{2}{5} & \dfrac{4}{5}
+				        \end{bNiceMatrix}.   &
+				      b_{1}                            & =
+				      -\dfrac{\operatorname{tr}\left(B_{1}\right)}{1}=
+				      -\frac{7}{5}.                                 \\
+				      B_{2}                            & \leftarrow
+				      A\left(B_{1}+b_{1}I_{2}\right)=
+				      \begin{bNiceMatrix}
+					      \dfrac{3}{5} & \dfrac{1}{5} \\
+					      \dfrac{2}{5} & \dfrac{4}{5}
+				      \end{bNiceMatrix}
+				      \left(
+				      \begin{bNiceMatrix}
+					      \dfrac{3}{5} & \dfrac{1}{5} \\
+					      \dfrac{2}{5} & \dfrac{4}{5}
+				      \end{bNiceMatrix}-
+				      \dfrac{7}{5}
+				      \begin{bNiceMatrix}
+					      1 & 0 \\
+					      0 & 1
+				      \end{bNiceMatrix}
+				      \right)=
+				      \begin{bNiceMatrix}
+					      -\dfrac{2}{5} & 0             \\
+					      0             & -\dfrac{2}{5}
+				      \end{bNiceMatrix}. &
+				      b_{2}                            & =
+				      -\dfrac{\operatorname{tr}\left(B_{2}\right)}{2}=
+				      \dfrac{2}{5}.
+			      \end{align*}
+			      Así, el polinomio característico de $A$ es
+			      \begin{math}
+				      a\left(\lambda\right)=
+				      \lambda^{2}-a_{1}\lambda-a_{2}=
+				      \lambda^{2}-\dfrac{7}{5}\lambda+\dfrac{2}{5}
+			      \end{math}.
 
 			      \begin{equation*}
-				      A=\begin{bNiceMatrix}
-					      0.6 & 0.2 \\
-					      0.4 & 0.8
-				      \end{bNiceMatrix},\quad
 				      A^{2}=
 				      \begin{bNiceMatrix}
 					      0.44 & 0.28 \\
@@ -234,12 +285,12 @@
 					      -s_{1}=
 					      -1.4.     \\
 					      a_{2} & =
-					      -\frac{1}{2}
+					      -\dfrac{1}{2}
 					      \left(
 					      s_{2}+
 					      \left(a_{1}\times s_{1}\right)
 					      \right)=
-					      -\frac{1}{2}
+					      -\dfrac{1}{2}
 					      \left(
 					      1.16+
 					      \left(-1.4\times 1.4\right)
@@ -247,6 +298,12 @@
 					      0.4.
 				      \end{aligned}
 			      \end{equation*}
+
+			      Así,
+			      \begin{math}
+				      P\left(x\right)=
+				      x^{2}-1.4x+0.4
+			      \end{math}.
 		\end{enumerate}
 	\end{solution}
 \end{frame}
@@ -256,14 +313,7 @@
 		\begin{enumerate}[c)]
 			\item
 
-			      Así,
-			      \begin{math}
-				      P\left(x\right)=
-				      x^{2}-1.4x+0.4
-			      \end{math}.
-
-			      Método de Krylov:
-
+			      \alert{Método de Krylov.} Si
 			      \begin{equation*}
 				      \begin{aligned}
 					      y_{0} & =
