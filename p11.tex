@@ -88,7 +88,35 @@
 \begin{frame}
 	\frametitle{Método de Krylov}
 
-	.
+	\begin{theorem}[Caley-Hamilton]
+		Suponga que $V$ un espacio vectorial complejo y
+		$T\in\mathcal{L}\left(V\right)$.
+		Sea $q$ el polinomio característico de $T$.
+		Entonces, $q\left(T\right)=0$.
+	\end{theorem}
+
+	% https://apuntespme.cl/biblio/AXLER_LINEARALGEBRA.pdf
+	% https://en.wikipedia.org/wiki/Cayley%E2%80%93Hamilton_theorem#Determinant_and_inverse_matrix
+	\begin{theorem}
+		Suponga que $T\in\mathcal{L}\left(V\right)$ y
+		$q\in\mathcal{P}\left(\mathbb{R}\right)$.
+		Entonces, $q\left(T\right)=0$ sii $q$ es un polinomio múltiplo
+		del polinomio minimal de $T$.
+	\end{theorem}
+
+	\begin{block}{Observación}
+		Sea $A\in\mathbb{R}^{n\times n}$ una matriz invertible
+		\begin{equation*}
+			p\left(A\right)=
+			A^{n}+
+			c_{n-1}A^{n-1}+
+			\cdots+
+			c_{1}A+
+			{\left(-1\right)}^{n}
+			\det\left(A\right)I_{n}=
+			0.
+		\end{equation*}
+	\end{block}
 \end{frame}
 
 \begin{frame}
@@ -221,8 +249,8 @@
 					      \dfrac{3}{5} & \dfrac{1}{5} \\
 					      \dfrac{2}{5} & \dfrac{4}{5}
 				      \end{bNiceMatrix}
-			      \end{math},
-			      entonces
+			      \end{math}, entonces
+
 			      \begin{align*}
 				      B_{1}                            & \leftarrow
 				      A=\begin{bNiceMatrix}
@@ -314,6 +342,25 @@
 			\item
 
 			      \alert{Método de Krylov.} Si
+			      \begin{math}
+				      A=\begin{bNiceMatrix}
+					      \dfrac{3}{5} & \dfrac{1}{5} \\
+					      \dfrac{2}{5} & \dfrac{4}{5}
+				      \end{bNiceMatrix}
+			      \end{math} e
+			      \begin{math}
+				      y_{0}=
+				      \begin{bNiceMatrix}
+					      1 \\
+					      0
+				      \end{bNiceMatrix}
+			      \end{math}
+			      , entonces
+
+			      \begin{align*}
+				      0.
+			      \end{align*}
+
 			      \begin{equation*}
 				      \begin{aligned}
 					      y_{0} & =
