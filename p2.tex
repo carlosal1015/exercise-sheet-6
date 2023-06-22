@@ -80,7 +80,8 @@
 						\alert{1}
 					\end{bNiceMatrix}
 				\end{math}
-				un punto inicial y una tolerancia $\epsilon=10^{-5}$.
+				un punto inicial, una tolerancia $\epsilon=10^{-5}$ y
+				$N_{\text{máx}}=10$.
 				En la etapa $k=0$, resolver el sistema lineal
 
 				\begin{align*}
@@ -119,11 +120,11 @@
 					\begin{bmatrix}
 						\dfrac{183}{8} \\
 						\dfrac{51}{8}
-					\end{bmatrix}
+					\end{bmatrix}.
 				\end{align*}
-				y actualizar
+				Y actualizar
 				\begin{align*}
-					x^{\left(1\right)}=
+					x^{\left(1\right)}\leftarrow
 					x^{\left(0\right)}+
 					h^{\left(0\right)} \\
 					x^{\left(1\right)}=
@@ -134,14 +135,131 @@
 					\begin{bNiceMatrix}
 						\dfrac{183}{8} \\
 						\dfrac{51}{8}
-					\end{bNiceMatrix}
+					\end{bNiceMatrix}=
+					\begin{bNiceMatrix}
+						\dfrac{191}{8} \\
+						\dfrac{59}{8}
+					\end{bNiceMatrix}.
 				\end{align*}
+				Mientras que $0\leq N_{\text{máx}}$, el
+				\begin{math}
+					\det
+					\left(
+					DF\left(x^{\left(0\right)}\right)
+					\right)=
+					8\geq
+					\epsilon
+				\end{math}
+				y
+				\begin{math}
+					{\left\|
+						x^{\left(1\right)}-
+						x^{\left(0\right)}
+						\right\|}_{\infty}=
+						{\left\|
+							h^{\left(0\right)}
+							\right\|}_{\infty}=
+					\dfrac{183}{8}\geq\epsilon
+				\end{math}.
+		\end{description}
+	\end{solution}
+\end{frame}
 
-				% $x_{0}=\left(-1,-1\right)$.
+\begin{frame}
+	\begin{solution}
+		\begin{description}
+			\item[Método de Newton]
 
+				En la etapa $k=1$, resolver el sistema lineal
+
+				\begin{align*}
+					DF
+					\left(x^{\left(1\right)}\right)
+					h^{\left(1\right)}             & =
+					-F\left(x^{\left(1\right)}\right)                                                                                                                                              \\
+					\begin{bNiceMatrix}
+						2\times\alert{\dfrac{191}{8}}+\alert{\dfrac{59}{8}} & \alert{\dfrac{191}{8}}                              \\
+						\alert{\dfrac{59}{8}}                               & \alert{\dfrac{191}{8}}+2\times\alert{\dfrac{59}{8}}
+					\end{bNiceMatrix}
+					\begin{bmatrix}
+						h_{1}^{\left(1\right)} \\
+						h_{2}^{\left(1\right)}
+					\end{bmatrix} & =
+					-\begin{bNiceMatrix}
+						 {\left(\alert{\dfrac{191}{8}}\right)}^{2} + \alert{\dfrac{191}{8}}\times\alert{\dfrac{59}{8}} -77 \\
+						 \alert{\dfrac{191}{8}}\times\alert{\dfrac{59}{8}}  + {\left(\alert{\dfrac{59}{8}}\right)}^{2} - 44
+					 \end{bNiceMatrix} \\
+					\begin{bNiceMatrix}
+						\dfrac{441}{8} & \dfrac{191}{8} \\
+						\dfrac{59}{8}  & \dfrac{309}{8}
+					\end{bNiceMatrix}
+					\begin{bmatrix}
+						h_{1}^{\left(1\right)} \\
+						h_{2}^{\left(1\right)}
+					\end{bmatrix} & =
+					-\begin{bNiceMatrix}
+						 -\dfrac{21411}{32} \\
+						 -\dfrac{5967}{32}
+					 \end{bNiceMatrix}\xRightarrow{\text{Resolviendo}}
+					\begin{bmatrix}
+						h_{1}^{\left(1\right)} \\
+						h_{2}^{\left(1\right)}
+					\end{bmatrix}=
+					\begin{bmatrix}
+						-\dfrac{2738151}{250000} \\
+						-\dfrac{684099}{250000}
+					\end{bmatrix}.
+				\end{align*}
+				Y actualizar
+				\begin{align*}
+					x^{\left(2\right)}\leftarrow
+					x^{\left(1\right)}+
+					h^{\left(1\right)} \\
+					x^{\left(2\right)}=
+					\begin{bNiceMatrix}
+						\dfrac{191}{8} \\
+						\dfrac{59}{8}
+					\end{bNiceMatrix}+
+					\begin{bNiceMatrix}
+						-\dfrac{2738151}{250000} \\
+						-\dfrac{684099}{250000}
+					\end{bNiceMatrix}=
+					\begin{bNiceMatrix}
+						\dfrac{3230599}{250000} \\
+						\dfrac{1159651}{250000}
+					\end{bNiceMatrix}.
+				\end{align*}
+				Mientras que $0\leq N_{\text{máx}}$, el
+				\begin{math}
+					\det
+					\left(
+					DF\left(x^{\left(1\right)}\right)
+					\right)=
+					\dfrac{15625}{8}\geq
+					\epsilon
+				\end{math}
+				y
+				\begin{math}
+					{\left\|
+						x^{\left(2\right)}-
+						x^{\left(1\right)}
+						\right\|}_{\infty}=
+						{\left\|
+							h^{\left(1\right)}
+							\right\|}_{\infty}=
+					\dfrac{2738151}{250000}\geq\epsilon
+				\end{math}.
+		\end{description}
+	\end{solution}
+\end{frame}
+
+\begin{frame}
+	\begin{solution}
+		\begin{description}
 			\item[Método de Homotopía]
 
-
+				De manera análoga, con el punto inicial
+				$x_{0}=\left(-1,-1\right)$, se obtendrá la solución.
 		\end{description}
 	\end{solution}
 \end{frame}
