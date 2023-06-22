@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 
-"""Programa Faddeev-LeVerrier.py"""
+"""Programa Faddeev-LeVerrier.py
+https://sci-hub.ru/10.1137/0610040
+https://arxiv.org/pdf/2008.04247.pdf
+https://avosz.fr/wp-content/uploads/Computational-Methods-for-Linear-Algebra-D.K.Faddeev-2c88ddb0837548a735039428fa89f68cc85cc9a3.pdf
+"""
 
 import numpy as np
 

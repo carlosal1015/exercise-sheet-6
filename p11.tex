@@ -1,7 +1,10 @@
 \section{Pregunta N$^{\circ}$11\qquad Alejandro Escobar Mejia}
 
 \begin{frame}
-	\frametitle{Cálculo de la inversa de una matriz grande $A\in\mathbb{R}^{n\times n}$}
+	\frametitle{
+		Cálculo de la inversa de una matriz grande
+		$A\in\mathbb{R}^{n\times n}$
+	}
 
 	Es una tarea desafiante porque usando la fórmula
 	\begin{math}
@@ -142,10 +145,15 @@
 		\begin{enumerate}[a)]
 			\item
 
-			      Sean $x_{1}$ y $x_{2}$ la cantidad de aves en la zona
-			      $Z_{1}$ y $Z_{2}$, respectivamente.
+			      Sean $x_{1},x_{2}\in\mathbb{N}$ las variables que
+			      representan la cantidad de aves en la zona $Z_{1}$ y
+			      $Z_{2}$, respectivamente.
 
 			\item
+
+			      Sean $k$ la etapa actual y $k+1$ la etapa posterior.
+			      Representamos la dinámica de población del territorio
+			      como
 
 			      \begin{equation*}
 				      \begin{aligned}
@@ -156,23 +164,47 @@
 					      0.4x^{\left(k\right)}_{1}+
 					      0.8x^{\left(k\right)}_{2}
 				      \end{aligned}\iff
-				      \begin{bNiceMatrix}
-					      x^{\left(k+1\right)}_{1} \\
-					      x^{\left(k+1\right)}_{2}
-				      \end{bNiceMatrix}
+				      \underbrace{
+					      \begin{bNiceMatrix}
+						      x^{\left(k+1\right)}_{1} \\
+						      x^{\left(k+1\right)}_{2}
+					      \end{bNiceMatrix}
+				      }_{\displaystyle x^{\left(k+1\right)}}
 				      =
-				      \begin{bNiceMatrix}
-					      0.6 & 0.2 \\
-					      0.4 & 0.8
-				      \end{bNiceMatrix}
-				      \begin{bNiceMatrix}
-					      x^{\left(k\right)}_{1} \\
-					      x^{\left(k\right)}_{2}
-				      \end{bNiceMatrix}\iff
-				      x^{\left(k+1\right)}=
-				      Ax^{\left(k\right)}.
+				      \underbrace{
+					      \begin{bNiceMatrix}
+						      0.6 & 0.2 \\
+						      0.4 & 0.8
+					      \end{bNiceMatrix}
+				      }_{\displaystyle A}
+				      \underbrace{
+					      \begin{bNiceMatrix}
+						      x^{\left(k\right)}_{1} \\
+						      x^{\left(k\right)}_{2}
+					      \end{bNiceMatrix}
+				      }_{\displaystyle x^{\left(k\right)}},
 			      \end{equation*}
 
+			      donde $A$ es la matriz que define la migración de aves
+			      entre las zonas $Z_{1}$ y $Z_{2}$.
+
+			\item
+
+			      Los coeficientes del polinomio característico de $A$
+			      \begin{equation*}
+				      a\left(\lambda\right)=
+				      \lambda^{n}+a_{1}\lambda^{n-1}+\cdots+
+				      a_{n-1}\lambda^{n}+a_{n}
+			      \end{equation*}
+			      se puede determinar a través del
+			      método de Faddeev-LeVerrier y Krylov.
+		\end{enumerate}
+	\end{solution}
+\end{frame}
+
+\begin{frame}
+	\begin{solution}
+		\begin{enumerate}[c)]
 			\item
 
 			      Método de Leverrier
