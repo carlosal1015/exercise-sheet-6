@@ -1,6 +1,89 @@
 \section{Pregunta N$^{\circ}$11\qquad Alejandro Escobar Mejia}
 
 \begin{frame}
+	\frametitle{Cálculo de la inversa de una matriz grande $A\in\mathbb{R}^{n\times n}$}
+
+	Es una tarea desafiante porque usando la fórmula
+	\begin{math}
+		\det\left(A\right)=
+		\sum_{\sigma}
+		\operatorname{sign}\left(\sigma\right)
+		a_{1\sigma\left(1\right)}
+		\cdots
+		a_{n\sigma\left(n\right)}
+	\end{math}
+	podría requerir $O\left(\left(n-1\right)n!\right)$
+	multiplicaciones.
+	El algoritmo de eliminación gaussiana permite transformar una
+	matriz en forma triangular con $O\left(n^{3}\right)$ operaciones.
+	Además, este algoritmo incluye divisiones por entradas de la
+	matriz, lo que requiere una estrategia de pivote para evitar
+	inestabilidades numéricas.
+	Es más, este algoritmo no se puede utilizar sobre matrices que
+	tiene entradas sobre un anillo conmutativo sin división.
+	Por lo tanto, es deseable encontrar un algoritmo rápido sin
+	divisiones.
+	El algoritmo clásico de \alert{Faddeev-LeVerrier} proporciona
+	precisamente esto, su complejidad computacional es del orden
+	$O\left(n^{\beta+1}\right)$ y evita cualquier división por una
+	entrada de la matriz.
+	Aquí $O\left(n^{\beta}\right)$ es el costo computacional de
+	multiplicar dos matrices $n\times n$.
+	El valor preciso de $\beta$ es desconocido, pero está en el
+	intervalo $\left[2,2.37286\right[$. Este enfoque consiste en
+	\begin{equation*}
+		B_{0}=I_{n},\quad
+		\alpha_{k}=
+		\dfrac{1}{k}
+		\operatorname{tr}\left(AB_{k-1}\right),\quad
+		B_{k}=-AB_{k-1}+\alpha_{k},\quad
+		\forall k\in\mathbb{N}.
+	\end{equation*}
+
+	\begin{block}{Derivación del algoritmo}
+		\begin{equation*}
+			\chi\left(t\right)\coloneqq
+			\sum\limits_{j=0}^{n}
+			c_{n-j}t^{j}
+		\end{equation*}
+	\end{block}
+
+	\alert{método de Krylov}.
+\end{frame}
+
+\begin{frame}
+	Sea $A\in\mathbb{R}^{n\times n}$ una matriz y su polinomio
+	característico es
+	\begin{equation*}
+		a\left(\lambda\right)=
+		\det\left(\lambda I_{n}-A\right)=
+		\lambda^{n}+a_{1}\lambda^{n-1}+\cdots+
+		a_{n-1}\lambda^{n}+a_{n},
+	\end{equation*}
+	donde $I_{n}$ denota la matriz identidad de orden $n$, y sea
+	\begin{equation*}
+		{\left(\lambda I_{n}-A\right)}^{n-1}=
+		\dfrac{
+		\lambda^{n-1}I_{n}+
+		\lambda^{n-2}B_{1}+
+		\cdots+
+		\lambda B_{n-2}+
+		B_{n-1}
+		}{a\left(\lambda\right)}.
+	\end{equation*}
+
+	\begin{align*}
+		a_{1} & =-\operatorname{tr}\left(A\right),                   &
+		a_{k} & =-\frac{1}{k}\operatorname{tr}\left(AB_{k-1}\right),
+		      & k\in\left\{2,\dotsc,n\right\}.                         \\
+		B_{1} & = A + a_{1}I_{n},                                    &
+		B_{k} & =AB_{k-1}+a_{k}I_{n},
+		      & k\in\left\{2,\dotsc,n-1\right\}.
+	\end{align*}
+	donde $\operatorname{tr}\left(A\right)$ denota la traza de $A$.
+\end{frame}
+
+\begin{frame}
 	\begin{enumerate}\setcounter{enumi}{10}
 		\item
 
@@ -106,12 +189,12 @@
 				      \end{bNiceMatrix},\quad
 				      \begin{aligned}
 					      s_{1} & =
-					      \operatorname{traz}
+					      \operatorname{tr}
 					      \left(A\right)=
 					      0.6+0.8=
 					      1.4.      \\
 					      s_{2} & =
-					      \operatorname{traz}
+					      \operatorname{tr}
 					      \left(A^{2}\right)=
 					      0.44+0.72=
 					      1.16.     \\
