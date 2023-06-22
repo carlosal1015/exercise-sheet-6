@@ -19,10 +19,10 @@ Y = sp.Matrix([x_1, x_2, x_3])
 
 D_X_Y = X.jacobian(Y)
 
-print(f"{D_X_Y.det()}")
+print(f"{D_X_Y.det().subs({x_1: 0, x_2: 0, x_3: 0})}")
 
 # print(f"{D_X_Y}")
-# print(f"{D_X_Y.inv()}")
+# print(f"{sp.N(D_X_Y.inv().norm().subs({x_1: 1, x_2: 1, x_3: 0}))}")
 # print(f"{sp.simplify(D_X_Y * D_X_Y.inv())}")
 # f_1_prime_x_1 = sp.diff(f_1, x_1)
 # f_1_prime_x_2 = sp.diff(f_1, x_2)
