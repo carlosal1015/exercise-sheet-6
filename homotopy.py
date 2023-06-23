@@ -48,3 +48,7 @@ x0 = [1.0, 1.0, 0.0]
 if __name__ == "__main__":
     print(f"x0: {x0}")
     homotopia(f, J, x0)
+
+
+x_ast = np.array([0.59999999, 0.99999998, -0.50000004])
+print(f(x_ast))
