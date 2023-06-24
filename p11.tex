@@ -43,81 +43,81 @@
 		\forall k\in\mathbb{N}.
 	\end{equation*}
 
-	\begin{block}{Derivación del algoritmo}
-		\begin{equation*}
-			\chi\left(t\right)\coloneqq
-			\sum\limits_{j=0}^{n}
-			c_{n-j}t^{j}
-		\end{equation*}
-	\end{block}
+	% \begin{block}{Derivación del algoritmo}
+	% 	\begin{equation*}
+	% 		\chi\left(t\right)\coloneqq
+	% 		\sum\limits_{j=0}^{n}
+	% 		c_{n-j}t^{j}
+	% 	\end{equation*}
+	% \end{block}
 \end{frame}
 
-\begin{frame}
-	Sea $A\in\mathbb{R}^{n\times n}$ una matriz y su polinomio
-	característico es
-	\begin{equation*}
-		a\left(\lambda\right)=
-		\left(-1\right)^{n}
-		\left[
-		\lambda^{n}-a_{1}\lambda^{n-1}-\cdots-a_{n-1}\lambda-a_{n}
-		\right],
-	\end{equation*}
-	donde $I_{n}$ denota la matriz identidad de orden $n$, y sea
-	\begin{equation*}
-		{\left(\lambda I_{n}-A\right)}^{n-1}=
-		\dfrac{
-		\lambda^{n-1}I_{n}+
-		\lambda^{n-2}B_{1}+
-		\cdots+
-		\lambda B_{n-2}+
-		B_{n-1}
-		}{a\left(\lambda\right)}.
-	\end{equation*}
+% \begin{frame}
+% 	Sea $A\in\mathbb{R}^{n\times n}$ una matriz y su polinomio
+% 	característico es
+% 	\begin{equation*}
+% 		a\left(\lambda\right)=
+% 		\left(-1\right)^{n}
+% 		\left[
+% 		\lambda^{n}-a_{1}\lambda^{n-1}-\cdots-a_{n-1}\lambda-a_{n}
+% 		\right],
+% 	\end{equation*}
+% 	donde $I_{n}$ denota la matriz identidad de orden $n$, y sea
+% 	\begin{equation*}
+% 		{\left(\lambda I_{n}-A\right)}^{n-1}=
+% 		\dfrac{
+% 		\lambda^{n-1}I_{n}+
+% 		\lambda^{n-2}B_{1}+
+% 		\cdots+
+% 		\lambda B_{n-2}+
+% 		B_{n-1}
+% 		}{a\left(\lambda\right)}.
+% 	\end{equation*}
 
-	\begin{align*}
-		a_{1} & =-\operatorname{tr}\left(A\right),                    &
-		a_{k} & =-\dfrac{1}{k}\operatorname{tr}\left(AB_{k-1}\right),
-		      & k\in\left\{2,\dotsc,n\right\}.                          \\
-		B_{1} & = A + a_{1}I_{n},                                     &
-		B_{k} & =AB_{k-1}+a_{k}I_{n},
-		      & k\in\left\{2,\dotsc,n-1\right\}.
-	\end{align*}
-	donde $\operatorname{tr}\left(A\right)$ denota la traza de $A$.
-\end{frame}
+% 	\begin{align*}
+% 		a_{1} & =-\operatorname{tr}\left(A\right),                    &
+% 		a_{k} & =-\dfrac{1}{k}\operatorname{tr}\left(AB_{k-1}\right),
+% 		      & k\in\left\{2,\dotsc,n\right\}.                          \\
+% 		B_{1} & = A + a_{1}I_{n},                                     &
+% 		B_{k} & =AB_{k-1}+a_{k}I_{n},
+% 		      & k\in\left\{2,\dotsc,n-1\right\}.
+% 	\end{align*}
+% 	donde $\operatorname{tr}\left(A\right)$ denota la traza de $A$.
+% \end{frame}
 
-\begin{frame}
-	\frametitle{Método de Krylov}
+% \begin{frame}
+% 	\frametitle{Método de Krylov}
 
-	\begin{theorem}[Caley-Hamilton]
-		Suponga que $V$ un espacio vectorial complejo y
-		$T\in\mathcal{L}\left(V\right)$.
-		Sea $q$ el polinomio característico de $T$.
-		Entonces, $q\left(T\right)=0$.
-	\end{theorem}
+% 	\begin{theorem}[Caley-Hamilton]
+% 		Suponga que $V$ un espacio vectorial complejo y
+% 		$T\in\mathcal{L}\left(V\right)$.
+% 		Sea $q$ el polinomio característico de $T$.
+% 		Entonces, $q\left(T\right)=0$.
+% 	\end{theorem}
 
-	% https://apuntespme.cl/biblio/AXLER_LINEARALGEBRA.pdf
-	% https://en.wikipedia.org/wiki/Cayley%E2%80%93Hamilton_theorem#Determinant_and_inverse_matrix
-	\begin{theorem}
-		Suponga que $T\in\mathcal{L}\left(V\right)$ y
-		$q\in\mathcal{P}\left(\mathbb{R}\right)$.
-		Entonces, $q\left(T\right)=0$ sii $q$ es un polinomio múltiplo
-		del polinomio minimal de $T$.
-	\end{theorem}
+% 	% https://apuntespme.cl/biblio/AXLER_LINEARALGEBRA.pdf
+% 	% https://en.wikipedia.org/wiki/Cayley%E2%80%93Hamilton_theorem#Determinant_and_inverse_matrix
+% 	\begin{theorem}
+% 		Suponga que $T\in\mathcal{L}\left(V\right)$ y
+% 		$q\in\mathcal{P}\left(\mathbb{R}\right)$.
+% 		Entonces, $q\left(T\right)=0$ sii $q$ es un polinomio múltiplo
+% 		del polinomio minimal de $T$.
+% 	\end{theorem}
 
-	\begin{block}{Observación}
-		Sea $A\in\mathbb{R}^{n\times n}$ una matriz invertible
-		\begin{equation*}
-			p\left(A\right)=
-			A^{n}+
-			c_{n-1}A^{n-1}+
-			\cdots+
-			c_{1}A+
-			{\left(-1\right)}^{n}
-			\det\left(A\right)I_{n}=
-			0.
-		\end{equation*}
-	\end{block}
-\end{frame}
+% 	\begin{block}{Observación}
+% 		Sea $A\in\mathbb{R}^{n\times n}$ una matriz invertible
+% 		\begin{equation*}
+% 			p\left(A\right)=
+% 			A^{n}+
+% 			c_{n-1}A^{n-1}+
+% 			\cdots+
+% 			c_{1}A+
+% 			{\left(-1\right)}^{n}
+% 			\det\left(A\right)I_{n}=
+% 			0.
+% 		\end{equation*}
+% 	\end{block}
+% \end{frame}
 
 \begin{frame}
 	\begin{enumerate}\setcounter{enumi}{10}
@@ -292,46 +292,46 @@
 				      \lambda^{2}-\dfrac{7}{5}\lambda+\dfrac{2}{5}
 			      \end{math}.
 
-			      \begin{equation*}
-				      A^{2}=
-				      \begin{bNiceMatrix}
-					      0.44 & 0.28 \\
-					      0.56 & 0.72
-				      \end{bNiceMatrix},\quad
-				      \begin{aligned}
-					      s_{1} & =
-					      \operatorname{tr}
-					      \left(A\right)=
-					      0.6+0.8=
-					      1.4.      \\
-					      s_{2} & =
-					      \operatorname{tr}
-					      \left(A^{2}\right)=
-					      0.44+0.72=
-					      1.16.     \\
-					      a_{1} & =
-					      -s_{1}=
-					      -1.4.     \\
-					      a_{2} & =
-					      -\dfrac{1}{2}
-					      \left(
-					      s_{2}+
-					      \left(a_{1}\times s_{1}\right)
-					      \right)=
-					      -\dfrac{1}{2}
-					      \left(
-					      1.16+
-					      \left(-1.4\times 1.4\right)
-					      \right)=
-					      0.4.
-				      \end{aligned}
-			      \end{equation*}
+			      % \begin{equation*}
+			      %   A^{2}=
+			      %   \begin{bNiceMatrix}
+			      %     0.44 & 0.28 \\
+			      %     0.56 & 0.72
+			      %   \end{bNiceMatrix},\quad
+			      %   \begin{aligned}
+			      %     s_{1} & =
+			      %     \operatorname{tr}
+			      %     \left(A\right)=
+			      %     0.6+0.8=
+			      %     1.4.      \\
+			      %     s_{2} & =
+			      %     \operatorname{tr}
+			      %     \left(A^{2}\right)=
+			      %     0.44+0.72=
+			      %     1.16.     \\
+			      %     a_{1} & =
+			      %     -s_{1}=
+			      %     -1.4.     \\
+			      %     a_{2} & =
+			      %     -\dfrac{1}{2}
+			      %     \left(
+			      %     s_{2}+
+			      %     \left(a_{1}\times s_{1}\right)
+			      %     \right)=
+			      %     -\dfrac{1}{2}
+			      %     \left(
+			      %     1.16+
+			      %     \left(-1.4\times 1.4\right)
+			      %     \right)=
+			      %     0.4.
+			      %   \end{aligned}
+			      % \end{equation*}
 
-			      Así,
-			      \begin{math}
-				      P\left(x\right)=
-				      x^{2}-1.4x+0.4
-			      \end{math}.
+			      % Así,
+			      % \begin{math}
+			      %   P\left(x\right)=
+			      %   x^{2}-1.4x+0.4
+			      % \end{math}.
 		\end{enumerate}
 	\end{solution}
 \end{frame}
@@ -356,10 +356,6 @@
 				      \end{bNiceMatrix}
 			      \end{math}
 			      , entonces
-
-			      \begin{align*}
-				      0.
-			      \end{align*}
 
 			      \begin{equation*}
 				      \begin{aligned}
