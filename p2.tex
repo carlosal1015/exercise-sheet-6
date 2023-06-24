@@ -316,11 +316,29 @@
 					\end{bNiceMatrix}
 				\end{math}
 				un punto inicial, un
-				$N_{\text{máx}}=10$ y un $h=0.10$
+				$N_{\text{máx}}=10$, un $h=0.10$ y 
+                    \begin{math}
+                        f(x_0)=
+                        \begin{bNiceMatrix}
+                            -27 & 6\\
+                            2.7 & -0.6
+                        \end{bNiceMatrix}
+                    \end{math}
 
-                Para $K1=h(-J(W_0)^{-1}$
+                Para:
+                
+                \begin{equation*}
+                    k_1=h(-J(W_0)^{-1})f(x_0)
+                    
+                    k_1=h
+                    \begin{bNiceMatrix}
+                            15 & 5\\
+                            5 & 15
+                            \end{bNiceMatrix}^{-1}f(x_0)
+                \end{equation*}
 
-				.
- 		\end{description}
+                
+
+				\end{description}
 	\end{solution}
  \end{frame}
